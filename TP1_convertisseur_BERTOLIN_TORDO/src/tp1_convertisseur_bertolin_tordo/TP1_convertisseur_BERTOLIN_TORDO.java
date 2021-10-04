@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author loïc
+ * @author loic
  */
 public class TP1_convertisseur_BERTOLIN_TORDO {
 
@@ -20,7 +20,7 @@ public class TP1_convertisseur_BERTOLIN_TORDO {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("\n Bonjour, saisissez une valeur réelle :");
-        double nb1 = sc.nextFloat();
+        double nb1 = sc.nextDouble();
 
         System.out.println("\n Saisissez la convertion que vous voulez effectuer :");
         int operateur = sc.nextInt();
@@ -32,30 +32,39 @@ public class TP1_convertisseur_BERTOLIN_TORDO {
         }
         double result;
         switch (operateur) {
-            case 1:// CelciusVersKelvin
+            case 1 -> {
+                // CelciusVersKelvin
                 result = (double) CelciusVersKelvin(nb1);
                 System.out.println("La température en Kelvin est : " + result);
-                break;
-            case 2://KelvinVersCelcius
+            }
+            case 2 -> {
+                //KelvinVersCelcius
                 result = (double) KelvinVersCelcius(nb1);
                 System.out.println("La température en Celcius est : " + result);
-                break;
-            case 3://FarenheitVersCelcius
+            }
+            case 3 -> {
+                //FarenheitVersCelcius
                 result = FarenheitVersCelcius(nb1);
                 System.out.println("La température en Celcius est : " + result);
-                break;
-            case 4://CelciusVersFarenheit
+            }
+            case 4 -> {
+                //CelciusVersFarenheit
                 result = CelciusVersFarenheit(nb1);
                 System.out.println("La température en Fareinheit est : " + result);
-                break;
-            case 5://KelvinVersFarenheit
+            }
+            case 5 -> {
+                //KelvinVersFarenheit
                 result = KelvinVersFarenheit(nb1);
                 System.out.println("La température en Fareinheit est : " + result);
-                break;
-            case 6://FarenheitVersKelvin
+            }
+            case 6 -> {
+                //FarenheitVersKelvin
                 result = FarenheitVersKelvin(nb1);
                 System.out.println("La température en Kelvin est : " + result);
-                break;
+                //System.out.println("La température en Celcius est : "+nb1);
+                //double temp = CelciusVersKelvin(nb1);
+                //System.out.println("La température en Kelvin est : " + temp);
+            }
 
             //System.out.println("La température en Celcius est : "+nb1);
             //double temp = CelciusVersKelvin(nb1);
