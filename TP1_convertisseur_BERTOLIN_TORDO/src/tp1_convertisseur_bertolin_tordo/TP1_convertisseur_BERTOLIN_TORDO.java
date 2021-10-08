@@ -20,15 +20,15 @@ public class TP1_convertisseur_BERTOLIN_TORDO {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("\n Bonjour, saisissez une valeur réelle :");
-        double nb1 = sc.nextDouble();
+        double nb1 = sc.nextDouble(); //demande a l utilisateur nb1=temperature
 
         System.out.println("\n Saisissez la convertion que vous voulez effectuer :");
-        int operateur = sc.nextInt();
+        int operateur = sc.nextInt(); //demande a l utilisateur de choisir un programme
 
         while (operateur > 6 || operateur < 1) {
             System.out.println("ERREUR La valeur n'est pas comprise entre 1 et 6");
             System.out.println("\n Entrer un nombre :");
-            operateur = sc.nextInt();
+            operateur = sc.nextInt(); //boucle tant que operateur (1 a 6) n est pas associe a un programme
         }
         double result;
         switch (operateur) {
