@@ -15,16 +15,18 @@ public class TP1_manipNombresInt {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Variable 1 : ");
-        int var1 = sc.nextInt();
-        System.out.println("Variable 2 : ");
-        int var2 = sc.nextInt();
-        System.out.println("Les nombres sont " + var1 + " et " + var2);
-        System.out.println("La somme est " + (var1 + var2));
-        System.out.println("La différence est " + (var1-var2));
-        System.out.println("Le produit est " + (var1*var2));
-        System.out.println("La division est " + (var1/var2));
-        System.out.println("Le quotient est " + (var1/var2) + "et le reste est" + (var1%var2));
+        System.out.println("\n Entrer un premier nombre :");
+        int nb1 = sc.nextInt(); // on demande à l'utilisateur de saisir un permier nombre
+        
+        System.out.println("\n Entrer un deuxième nombre :");
+        int nb2 = sc.nextInt(); // on demande à l'utilisateur de saisir un permier nombre
+        System.out.println("Les nombres choisi sont : " + nb1 + " et " + nb2); // on affiche les nombres choisi par l'utilisateur
+        
+        System.out.println("La somme des 2 nombres est: " + (nb1+nb2)); // on effectue les calculs demandé
+        System.out.println("La différence des 2 nombres est: " + (nb1-nb2));
+        System.out.println("La multiplication des 2 nombres est: " + (nb1*nb2));
+        System.out.println("La différence des 2 nombres est: " + (nb1/nb2));
+        System.out.println("Le reste de la division des 2 nombres est: " + (nb1%nb2));
     }
     
 }
