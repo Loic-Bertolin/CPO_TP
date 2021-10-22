@@ -1,7 +1,9 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+* TP2 Biere
+* TORDO
+* BERTOLIN
+* 22/10/2021
+*/
 package tp2_bieres_bertolin_tordo;
 
 /**
