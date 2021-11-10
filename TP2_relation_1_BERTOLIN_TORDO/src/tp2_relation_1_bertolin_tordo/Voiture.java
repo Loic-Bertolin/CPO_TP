@@ -23,6 +23,8 @@ public class Voiture {
     }
     @Override
     public String toString() {
-        return "Modele " + Modele + "\n" + " Marque " + Marque + "PuissanceCV" + PuissanceCV;
+        String chaine;
+        chaine = "Modele " + Modele + "\n" + " Marque " + Marque + " PuissanceCV " + PuissanceCV;
+        return chaine;
     }
 }
