@@ -17,7 +17,7 @@ public class TP2_relation_1_BERTOLIN_TORDO {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        /*
+        
         Voiture uneClio = new Voiture ("Clio", "Renault", 5 ) ; 
         Voiture uneAutreClio = new Voiture ("Clio", "Renault", 5 ) ; 
         Voiture une2008 = new Voiture ("2008", "Peugeot", 6 ) ; 
@@ -27,7 +27,7 @@ public class TP2_relation_1_BERTOLIN_TORDO {
         Personne reno = new Personne("Reno", "Raines"); 
         
         System.out.println("liste des voitures disponibles "+ uneClio + "\n" + uneAutreClio + "\n" + une2008 + "\n" + uneMicra ) ;
-         */
+         
     }
 
 }
