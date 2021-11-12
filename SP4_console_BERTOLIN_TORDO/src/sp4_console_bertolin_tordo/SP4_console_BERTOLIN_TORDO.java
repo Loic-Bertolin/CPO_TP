@@ -16,6 +16,10 @@ public class SP4_console_BERTOLIN_TORDO {
      *12/11/21
      */
     public static void main(String[] args) {
+        //On crée deux joueurs
+        //On crée une partie incluant ces deux joueurs en paramètre
+        //On initialise la partie
+        //On la lance
         
     }
     
