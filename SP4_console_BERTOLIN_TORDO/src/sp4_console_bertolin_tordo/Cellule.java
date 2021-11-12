@@ -27,4 +27,37 @@ public class Cellule {
             return false;
         }
     }
+    public Jeton recupererJeton(){
+        lireCouleur.Jeton
+        //nombreJetonRestants.++
+          //ListeJetons
+    }
+    public boolean supprimerJeton(){
+        
+    }
+    public boolean placerTrouNoir(){
+        
+    }
+    public boolean placerDesintegrateur(){
+        
+    }
+    public boolean presenceTrouNoir(){
+        
+    }
+    public boolean presenceDesintegrateur(){
+        
+    }
+    public String lireCouleurDuJeton(){
+        if (){
+            return lireCouleur.jetonCourant;
+        }
+    }
+    
+    public boolean recupererDesintegrateur(){
+        
+    }
+    public boolean activerTrouNoir(){
+        
+    }
+    
 }
