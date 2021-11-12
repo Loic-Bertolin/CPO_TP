@@ -9,5 +9,14 @@ package sp4_console_bertolin_tordo;
  * @author loicb
  */
 public class Jeton {
-    
+
+    String Couleur;
+
+    public void Jeton(String unCouleur) {
+        Couleur = unCouleur;
+    }
+
+    public String lireCouleur() {
+            return Couleur;
+        }
 }
