@@ -57,8 +57,15 @@ public class Grille {
     public boolean etreGagnantePourJoueur(){
         
     }
-    public void tasserGrille(){ 
-        
+    public void tasserGrille(int unecolonne){ 
+        int lignes = 0;
+        do{
+            if(CellulesJeu[lignes][unecolonne]!=null){
+                lignes++;
+            }
+            // reste à faire décaler tout les jetons vers le bas quand on a trouvé la case
+            // reste à faire etreGagnantePourJoueur et afficherGrilleSurConsole
+        }while(lignes!=6);
     }
     public boolean colonneRemplie(int unecolonne){
         for(int lignes= 0; lignes<6; lignes++){
