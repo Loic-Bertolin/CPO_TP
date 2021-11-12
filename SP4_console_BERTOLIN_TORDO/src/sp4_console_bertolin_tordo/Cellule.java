@@ -9,5 +9,22 @@ package sp4_console_bertolin_tordo;
  * @author loicb
  */
 public class Cellule {
+    Jeton jetonCourant;
+    boolean trouNoir;
+    boolean desintegrateur;
     
+    public Cellule(){
+        jetonCourant=null;
+        trouNoir=false;
+        desintegrateur=false;
+    }
+    public boolean affecterJeton(Jeton unJeton){
+        if (jetonCourant==null){
+            jetonCourant=unJeton;
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
