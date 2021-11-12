@@ -36,19 +36,29 @@ public class Cellule {
         
     }
     public boolean placerTrouNoir(){
-        
+        if(trouNoir==false){
+            trouNoir=true;
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     public boolean placerDesintegrateur(){
         
     }
     public boolean presenceTrouNoir(){
-        
+        return trouNoir;
     }
     public boolean presenceDesintegrateur(){
+        return desintegrateur;
         
     }
     public String lireCouleurDuJeton(){
-        if (){
+        if (jetonCourant==null){
+            return null;
+        }
+        else{
             return lireCouleur.jetonCourant;
         }
     }
