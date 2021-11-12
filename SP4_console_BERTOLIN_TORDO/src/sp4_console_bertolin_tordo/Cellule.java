@@ -9,65 +9,94 @@ package sp4_console_bertolin_tordo;
  * @author loicb
  */
 public class Cellule {
+
     Jeton jetonCourant;
     boolean trouNoir;
     boolean desintegrateur;
-    
-    public Cellule(){
-        jetonCourant=null;
-        trouNoir=false;
-        desintegrateur=false;
+
+    public Cellule() {
+        jetonCourant = null;
+        trouNoir = false;
+        desintegrateur = false;
     }
-    public boolean affecterJeton(Jeton unJeton){
-        if (jetonCourant==null){
-            jetonCourant=unJeton;
+
+    public boolean affecterJeton(Jeton unJeton) {
+        if (jetonCourant == null) {
+            jetonCourant = unJeton;
             return true;
-        }
-        else{
+        } 
+        else {
             return false;
         }
     }
-    public Jeton recupererJeton(){
-        lireCouleur.Jeton
-        //nombreJetonRestants.++
-          //ListeJetons
+
+    public Jeton recupererJeton() {
+        return jetonCourant;
     }
-    public boolean supprimerJeton(){
-        
-    }
-    public boolean placerTrouNoir(){
-        if(trouNoir==false){
-            trouNoir=true;
+
+    public boolean supprimerJeton() {
+        if (jetonCourant == null) {
+            return false;
+        } else {
+            jetonCourant = null;
             return true;
         }
-        else{
+    }
+
+    public boolean placerTrouNoir() {
+        if (trouNoir == false) {
+            trouNoir = true;
+            return true;
+        } else {
             return false;
         }
     }
-    public boolean placerDesintegrateur(){
-        
+
+    public boolean placerDesintegrateur() {
+        if (desintegrateur == false) {
+            desintegrateur = true;
+            return true;
+        } else {
+            return false;
+        }
     }
-    public boolean presenceTrouNoir(){
+
+    public boolean presenceTrouNoir() {
         return trouNoir;
     }
-    public boolean presenceDesintegrateur(){
+
+    public boolean presenceDesintegrateur() {
         return desintegrateur;
-        
+
     }
-    public String lireCouleurDuJeton(){
-        if (jetonCourant==null){
+
+    public String lireCouleurDuJeton() {
+        if (jetonCourant == null) {
             return null;
+        } 
+        else {
+            return jetonCourant.lireCouleur();
+        }
+    }
+
+    public boolean recupererDesintegrateur() {
+        if(desintegrateur==false){
+            return false;
         }
         else{
-            return lireCouleur.jetonCourant;
+            desintegrateur = false;
+            return true;
         }
     }
-    
-    public boolean recupererDesintegrateur(){
-        
+
+    public boolean activerTrouNoir() {
+        if(trouNoir==false){
+            return false;
+        }
+        else{
+            trouNoir = false;
+            return true;
+        }
     }
-    public boolean activerTrouNoir(){
-        
-    }
-    
+
 }

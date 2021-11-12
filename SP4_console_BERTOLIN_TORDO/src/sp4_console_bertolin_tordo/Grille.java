@@ -9,5 +9,10 @@ package sp4_console_bertolin_tordo;
  * @author loicb
  */
 public class Grille {
+    Cellule[][]CellulesJeu = new Cellule[6][7];
+    
+    public Grille(){
+        
+    }
     
 }
