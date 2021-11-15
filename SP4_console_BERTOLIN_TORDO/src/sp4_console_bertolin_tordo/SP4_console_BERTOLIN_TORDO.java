@@ -4,10 +4,13 @@
  */
 package sp4_console_bertolin_tordo;
 
+import java.util.Scanner;
+
 /**
  *
  * @author loicb
  */
+
 public class SP4_console_BERTOLIN_TORDO {
 
     /*SP4 console
@@ -16,6 +19,11 @@ public class SP4_console_BERTOLIN_TORDO {
      *12/11/21
      */
     public static void main(String[] args) {
+        Scanner sc = new Scanner ( System.in);
+        System.out.println("Entrer le nom du premier joueur :");
+        Joueur joueur1 = new Joueur(sc.nextLine());
+        System.out.println("Entrer le nom du deuxiéme joueur :");
+        Joueur joueur2 = new Joueur(sc.nextLine());
         //On crée deux joueurs
         //On crée une partie incluant ces deux joueurs en paramètre
         //On initialise la partie

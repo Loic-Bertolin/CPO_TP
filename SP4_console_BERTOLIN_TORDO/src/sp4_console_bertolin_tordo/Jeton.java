@@ -12,7 +12,7 @@ public class Jeton {
 
     String Couleur;
 
-    public void Jeton(String unCouleur) {
+    public Jeton(String unCouleur) {
         Couleur = unCouleur;
     }
 
