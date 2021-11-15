@@ -9,5 +9,20 @@ package sp4_console_bertolin_tordo;
  * @author loicb
  */
 public class Partie {
+    Joueur[] ListeJoueurs = new Joueur [2];
+    Joueur joueurCourant;
+    Grille grilleJeu;
     
+    public Partie(Joueur unJoueur , Joueur autreJoueur){
+        
+    }
+    public void inisialiserPartie(){
+        
+    }
+    public void débuterPartie(){
+        
+    }
+    public void attribuerCouleursAuxJoueurs(){
+        
+    }
 }

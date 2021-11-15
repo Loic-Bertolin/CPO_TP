@@ -9,82 +9,146 @@ package sp4_console_bertolin_tordo;
  * @author loicb
  */
 public class Grille {
-    Cellule[][]CellulesJeu = new Cellule[6][7];
-    
-    public Grille(){
-        for(int lignes=0;lignes<6;lignes++){
-            for(int colonnes= 0; colonnes<7; colonnes++){
-                CellulesJeu[lignes][colonnes]=null;
+
+    Cellule[][] CellulesJeu = new Cellule[6][7];
+
+    public Grille() {
+        for (int lignes = 0; lignes < 6; lignes++) {
+            for (int colonnes = 0; colonnes < 7; colonnes++) {
+                CellulesJeu[lignes][colonnes] = null;
             }
         }
     }
-    public boolean ajouterJetonDansColonne(Jeton unJeton, int unecolonne){
+
+    public boolean ajouterJetonDansColonne(Jeton unJeton, int unecolonne) {
         int lignes = 0;
-        do{
-            if(CellulesJeu[lignes][unecolonne]!=null){
-                lignes++;  
+        do {
+            if (CellulesJeu[lignes][unecolonne] != null) {
+                lignes++;
             }
-        }while(CellulesJeu[lignes][unecolonne]!=null);
+        } while (CellulesJeu[lignes][unecolonne] != null);
         return CellulesJeu[lignes][unecolonne].affecterJeton(unJeton);
     }
-    public boolean etreRemplie(){
-        for(int lignes=0;lignes<6;lignes++){
-            for(int colonnes= 0; colonnes<7; colonnes++){
-                if(CellulesJeu[lignes][colonnes]!=null){
+
+    public boolean etreRemplie() {
+        for (int lignes = 0; lignes < 6; lignes++) {
+            for (int colonnes = 0; colonnes < 7; colonnes++) {
+                if (CellulesJeu[lignes][colonnes] != null) {
                     return false;
                 }
             }
         }
         return true;
     }
-    public void viderGrille(){
-        for(int lignes=0;lignes<6;lignes++){
-            for(int colonnes= 0; colonnes<7; colonnes++){
-                CellulesJeu[lignes][colonnes]=null;  
+
+    public void viderGrille() {
+        for (int lignes = 0; lignes < 6; lignes++) {
+            for (int colonnes = 0; colonnes < 7; colonnes++) {
+                CellulesJeu[lignes][colonnes] = null;
             }
         }
     }
-    public void afficherGrilleSurConsole(){
-        
+
+    public void afficherGrilleSurConsole() {
+
     }
-    public boolean celluleOccupee(int uneligne, int unecolonne){
-        return CellulesJeu[uneligne][unecolonne]!=null;
-    
+
+    public boolean celluleOccupee(int uneligne, int unecolonne) {
+        return CellulesJeu[uneligne][unecolonne] != null;
+
     }
-    public String lireCouleurDuJeton(int uneligne, int unecolonne){
+
+    public String lireCouleurDuJeton(int uneligne, int unecolonne) {
         return CellulesJeu[uneligne][unecolonne].lireCouleurDuJeton();
     }
-    public boolean etreGagnantePourJoueur(){
-        
+
+    public boolean etreGagnantePourJoueur(Joueur unJoueur) {
+        for (int lignes = 0; lignes < 5; lignes++) {
+            for (int colonnes = 0; colonnes < 6; colonnes++) {
+                if (colonnes == 7) {
+                    colonnes = 0;
+                    lignes++;
+                }
+                if (CellulesJeu[lignes][colonnes] == null) {
+                    colonnes++;
+                } else {
+                    String couleur = unJoueur.Couleur;
+                    if (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() != couleur) {
+                        colonnes++;
+                    } else {
+                        int compteur=1;
+                        do{
+                            compteur++;
+                            if (compteur==4){
+                                return true;
+                            }
+                        }while(CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes + compteur][colonnes].lireCouleurDuJeton());
+                        compteur=1;
+                        do{
+                            compteur++;
+                            if (compteur==4){
+                                return true;
+                            }
+                        }while(CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes][colonnes+compteur].lireCouleurDuJeton());
+                        compteur=1;
+                        do{
+                            compteur++;
+                            if (compteur==4){
+                                return true;
+                            }
+                        }while(CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes + compteur][colonnes+compteur].lireCouleurDuJeton());
+                        compteur=1;
+                        do{
+                            compteur++;
+                            if (compteur==4){
+                                return true;
+                            }
+                        }while(CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes - compteur][colonnes-compteur].lireCouleurDuJeton());
+                    }
+                    colonnes++;
+                }
+            }
+        }
+        return false;
     }
-    public void tasserGrille(int unecolonne){ 
+
+    
+
+    public void tasserGrille(int unecolonne) {
         int lignes = 0;
-        do{
-            if(CellulesJeu[lignes][unecolonne]!=null){
+        do {
+            if (CellulesJeu[lignes][unecolonne] != null) {
                 lignes++;
             }
-            // reste à faire décaler tout les jetons vers le bas quand on a trouvé la case
-            // reste à faire etreGagnantePourJoueur et afficherGrilleSurConsole
-        }while(lignes!=6);
+        } while (CellulesJeu[lignes][unecolonne] != null);
+        for (int i = lignes; i < 4; i++) {
+            CellulesJeu[lignes][unecolonne] = CellulesJeu[lignes + 1][unecolonne];
+        }
+        CellulesJeu[5][unecolonne] = null;
     }
-    public boolean colonneRemplie(int unecolonne){
-        for(int lignes= 0; lignes<6; lignes++){
-            if(CellulesJeu[lignes][unecolonne]==null){
+
+    public boolean colonneRemplie(int unecolonne) {
+        for (int lignes = 0; lignes < 6; lignes++) {
+            if (CellulesJeu[lignes][unecolonne] == null) {
                 return false;
             }
         }
         return true;
     }
-    public boolean placerTrouNoir(int uneligne, int unecolonne){
-        return CellulesJeu[uneligne][unecolonne].placerTrouNoir();   
+
+    public boolean placerTrouNoir(int uneligne, int unecolonne) {
+        return CellulesJeu[uneligne][unecolonne].placerTrouNoir();
     }
-    public boolean placerDesintegrateur(int uneligne, int unecolonne){
+
+    public boolean placerDesintegrateur(int uneligne, int unecolonne) {
         return CellulesJeu[uneligne][unecolonne].placerDesintegrateur();
     }
-    public boolean supprimerJeton(int uneligne, int unecolonne){
+
+    public boolean supprimerJeton(int uneligne, int unecolonne) {
         return CellulesJeu[uneligne][unecolonne].supprimerJeton();
     }
-    public Jeton recupererJeton(int uneligne, int unecolonne){
+
+    public Jeton recupererJeton(int uneligne, int unecolonne) {
         return CellulesJeu[uneligne][unecolonne].recupererJeton();
     }
 }
