@@ -4,8 +4,6 @@
  */
 package sp4_console_bertolin_tordo;
 
-import java.util.Scanner;
-
 /**
  *
  * @author loicb

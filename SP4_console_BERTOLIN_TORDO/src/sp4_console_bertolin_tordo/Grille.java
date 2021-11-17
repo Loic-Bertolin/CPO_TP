@@ -15,7 +15,7 @@ public class Grille {
     public Grille() {
         for (int lignes = 0; lignes < 6; lignes++) {
             for (int colonnes = 0; colonnes < 7; colonnes++) {
-                CellulesJeu[lignes][colonnes] = null;
+                CellulesJeu[lignes][colonnes] = new Cellule();
             }
         }
     }
@@ -23,10 +23,10 @@ public class Grille {
     public boolean ajouterJetonDansColonne(Jeton unJeton, int unecolonne) {
         int lignes = 0;
         do {
-            if (CellulesJeu[lignes][unecolonne] != null) {
+            if (CellulesJeu[lignes][unecolonne].jetonCourant != null) {
                 lignes++;
             }
-        } while (CellulesJeu[lignes][unecolonne] != null);
+        } while (CellulesJeu[lignes][unecolonne] != null && lignes==6);
         return CellulesJeu[lignes][unecolonne].affecterJeton(unJeton);
     }
 
@@ -50,27 +50,27 @@ public class Grille {
     }
 
     public void afficherGrilleSurConsole() {
-        System.out.print("|");
-        for (int lignes = 0; lignes < 5; lignes++) {
-            for (int colonnes = 0; colonnes < 6; colonnes++) {
+        System.out.print("\n"+"|");
+        for (int lignes = 0; lignes < 6; lignes++) {
+            for (int colonnes = 0; colonnes < 7; colonnes++) {
                 if (colonnes == 6) {
                     colonnes = 0;
                     lignes++;
-                    System.out.println("|\n|");
+                    System.out.print("\n|");
                 }
-                if (CellulesJeu[lignes][colonnes].lireCouleurDuJeton()==null){
-                    System.out.print("-|");
-                }
-                if (CellulesJeu[lignes][colonnes].lireCouleurDuJeton()=="Rouge"){
+                
+                if ("Rouge".equals(CellulesJeu[lignes][colonnes].lireCouleurDuJeton())){
                     System.out.print("R|");
                 }
-                if (CellulesJeu[lignes][colonnes].lireCouleurDuJeton()=="Jaune"){
+                else if ("Jaune".equals(CellulesJeu[lignes][colonnes].lireCouleurDuJeton())){
                     System.out.print("J|");
                 }
-                if (CellulesJeu[lignes][colonnes].presenceTrouNoir()==true){
+                else if (CellulesJeu[lignes][colonnes].presenceTrouNoir()==true){
                     System.out.print("N|");
                 }
-                colonnes++;
+                else{
+                    System.out.print("-|");
+                }
             }
         }
     }
