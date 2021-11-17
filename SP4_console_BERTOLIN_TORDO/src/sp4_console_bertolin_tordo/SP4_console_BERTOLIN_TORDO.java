@@ -27,7 +27,7 @@ public class SP4_console_BERTOLIN_TORDO {
         //On initialise la partie
         //On la lance
 */
-        Jeton j=new Jeton ("rouge");
+        Jeton j=new Jeton ("Rouge");
         System.out.println(j.lireCouleur());
         Cellule c=new Cellule();
         System.out.println(c.lireCouleurDuJeton());
