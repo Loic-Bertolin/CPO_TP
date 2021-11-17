@@ -19,7 +19,7 @@ public class SP4_console_BERTOLIN_TORDO {
      *12/11/21
      */
     public static void main(String[] args) {
-        Scanner sc = new Scanner ( System.in);
+        /*Scanner sc = new Scanner ( System.in);
         System.out.println("Entrer le nom du premier joueur :");
         Joueur joueur1 = new Joueur(sc.nextLine());
         System.out.println("Entrer le nom du deuxiéme joueur :");
@@ -28,6 +28,18 @@ public class SP4_console_BERTOLIN_TORDO {
         //On crée une partie incluant ces deux joueurs en paramètre
         //On initialise la partie
         //On la lance
+*/
+        Jeton j=new Jeton ("rouge");
+        System.out.print(j.lireCouleur());
+        Cellule c=new Cellule();
+        System.out.print(c.lireCouleurDuJeton());
+        c.affecterJeton(j);
+        System.out.print(c.lireCouleurDuJeton());
+        Grille g=new Grille();
+        g.afficherGrilleSurConsole();
+        g.ajouterJetonDansColonne(j, 5);
+        g.afficherGrilleSurConsole();
+        
         
     }
     

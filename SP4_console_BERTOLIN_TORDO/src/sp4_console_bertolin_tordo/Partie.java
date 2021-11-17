@@ -20,7 +20,7 @@ public class Partie {
     public Partie(Joueur joueur1, Joueur joueur2) {
         ListeJoueurs[0] = joueur1;
         ListeJoueurs[1] = joueur2;
-        attribuerCouleursAuxJoueurs();
+        attribuerCouleursAuxJoueurs();  
 
         Random couleur = new Random();
         int alea = couleur.nextInt(1);
@@ -34,15 +34,22 @@ public class Partie {
     }
 
     public void inisialiserPartie() {
-        Grille Grillejeu = new Grille();
-        Grillejeu.afficherGrilleSurConsole();
-        for (int i = 0; i < 21; i++) {
+        grilleJeu = new Grille(); // créé et afficher grille
+        grilleJeu.afficherGrilleSurConsole();
+        for (int i = 0; i < 21; i++) { //donner les jetons aux joueurs
             Jeton unJeton = new Jeton("Jaune");
             ListeJoueurs[0].ListeJetons[i] = unJeton;
             Jeton unJeton2 = new Jeton("Rouge");
             ListeJoueurs[1].ListeJetons[i] = unJeton2;
-
-        }// qui gagne
+        }
+        for (int i = 0; i < 5; i++){
+            Random position = new Random();
+            do{
+                int lig = position.nextInt(5);
+                int col = position.nextInt(6);
+                
+            }while(grilleJeu.placerTrouNoir(lig, col)==false);
+        }
         //trou noir
         // integrateur
         //recup jeton
@@ -66,10 +73,27 @@ public class Partie {
         }while(action>=1 && action <=3 );
        for (int i=0; i<42; i++){
            switch(action){
-               case 1 -> ListeJoueurs[a].
+               case 1 :
+                   System.out.println("Quelle colonne jouer ? ");
+                   int col=sc.nextInt();
+                   joueurCourant.nombreJetonRestants--;
+                   Jeton j=joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants];
+                   grilleJeu.ajouterJetonDansColonne(j,col);
+                   joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants]=null;
+                   grilleJeu.afficherGrilleSurConsole();
+                   
+               case 2 :
+                   grilleJeu.afficherGrilleSurConsole();
+                   
+               case 3 :
+                   grilleJeu.afficherGrilleSurConsole();
+                   
            }
            System.out.println("Tour suivant :"+ joueurCourant.Nom);
-           if (Grillejeu.etreGagnantePourJoueur(joueurCourant)==true)
+           if (grilleJeu.etreGagnantePourJoueur(joueurCourant)==true){
+               System.out.println(joueurCourant.Nom +" a gagné, le jeu est terminé.");
+               break;
+           }
        }
     }
 
@@ -89,3 +113,7 @@ public class Partie {
         }
     }
 }
+
+
+//truc jaune debut 
+//break?
