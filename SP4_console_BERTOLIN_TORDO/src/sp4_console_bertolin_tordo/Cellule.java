@@ -21,7 +21,7 @@ public class Cellule {
     }
 
     public boolean affecterJeton(Jeton unJeton) {
-        if (jetonCourant == null) {
+        if (jetonCourant != null) {
             return false;
         } 
         else {

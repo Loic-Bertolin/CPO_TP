@@ -88,38 +88,8 @@ public class Grille {
         //verif lignes
         for (int lignes = 0; lignes < 5; lignes++) {
             for (int colonnes = 0; colonnes < 3; colonnes++) {
-                if (colonnes == 3) {
-                    colonnes = 0;
-                    lignes++;
-                }
-                if (CellulesJeu[lignes][colonnes] == null) {
-                    colonnes++;
-                } else {
-                    String couleur = unJoueur.Couleur;
-                    if (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() != couleur) {
-                        colonnes++;
-                    } else {
-                        int compteur = 1;
-                        do {
-                            compteur++;
-                            if (compteur == 4) {
-                                return true;
-                            }
-                        } while (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes + compteur][colonnes].lireCouleurDuJeton());
-
-                    }
-                    colonnes++;
-                }
-            }
-        }
-        //colonnes
-        for (int lignes = 0; lignes < 2; lignes++) {
-            for (int colonnes = 0; colonnes < 6; colonnes++) {
-                if (colonnes == 6) {
-                    colonnes = 0;
-                    lignes++;
-                }
-                if (CellulesJeu[lignes][colonnes] == null) {
+               
+                if (CellulesJeu[lignes][colonnes].jetonCourant == null) {
                     colonnes++;
                 } else {
                     String couleur = unJoueur.Couleur;
@@ -135,18 +105,34 @@ public class Grille {
                         } while (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes][colonnes + compteur].lireCouleurDuJeton());
 
                     }
+                }
+            }
+        }
+        //colonnes
+        for (int lignes = 0; lignes < 2; lignes++) {
+            for (int colonnes = 0; colonnes < 6; colonnes++) {
+                if (CellulesJeu[lignes][colonnes].jetonCourant == null) {
                     colonnes++;
+                } else {
+                    String couleur = unJoueur.Couleur;
+                    if (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() != couleur) {
+                        colonnes++;
+                    } else {
+                        int compteur = 1;
+                        do {
+                            compteur++;
+                            if (compteur == 4) {
+                                return true;
+                            }
+                        } while (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes + compteur][colonnes].lireCouleurDuJeton());
+                    }
                 }
             }
         }
         //verif diag +
         for (int lignes = 0; lignes < 2; lignes++) {
             for (int colonnes = 0; colonnes < 3; colonnes++) {
-                if (colonnes == 3) {
-                    colonnes = 0;
-                    lignes++;
-                }
-                if (CellulesJeu[lignes][colonnes] == null) {
+                if (CellulesJeu[lignes][colonnes].jetonCourant == null) {
                     colonnes++;
                 } else {
                     String couleur = unJoueur.Couleur;
@@ -160,20 +146,14 @@ public class Grille {
                                 return true;
                             }
                         } while (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes + compteur][colonnes + compteur].lireCouleurDuJeton());
-
                     }
-                    colonnes++;
                 }
             }
         }
         //verif diag -
         for (int lignes = 3; lignes < 5; lignes++) {
             for (int colonnes = 0; colonnes < 3; colonnes++) {
-                if (colonnes == 3) {
-                    colonnes = 0;
-                    lignes++;
-                }
-                if (CellulesJeu[lignes][colonnes] == null) {
+                if (CellulesJeu[lignes][colonnes].jetonCourant == null) {
                     colonnes++;
                 } else {
                     String couleur = unJoueur.Couleur;
@@ -187,9 +167,7 @@ public class Grille {
                                 return true;
                             }
                         } while (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes - compteur][colonnes - compteur].lireCouleurDuJeton());
-
                     }
-                    colonnes++;
                 }
             }
         }

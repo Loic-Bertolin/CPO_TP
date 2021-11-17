@@ -48,10 +48,6 @@ public final class Partie {
             int col = position.nextInt(6);
             grilleJeu.placerTrouNoir(lig, col);
         }
-        //trou noir
-        // integrateur
-        //recup jeton
-
     }
 
     public void débuterPartie() {
@@ -88,9 +84,21 @@ public final class Partie {
                         joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants] = null;
 
                     case 2:
+                        System.out.println("Quelle colonne jouer ? ");
+                        int col2 = sc.nextInt();
+                        System.out.println("Quelle ligne jouer ? ");
+                        int lig2 = sc.nextInt();
+                        grilleJeu.supprimerJeton(lig2, col2);
+                        grilleJeu.tasserGrille(col2);
 
                     case 3:
-
+                        System.out.println("Quelle colonne jouer ? ");
+                        int col3 = sc.nextInt();
+                        System.out.println("Quelle ligne jouer ? ");
+                        int lig3 = sc.nextInt();
+                        joueurCourant.ajouterJeton(grilleJeu.recupererJeton(lig3,col3));
+                        grilleJeu.supprimerJeton(lig3, col3);
+                        grilleJeu.tasserGrille(col3);
                 }
             }
         } while ((grilleJeu.etreGagnantePourJoueur(joueurCourant) == true) || (grilleJeu.etreRemplie() == true));
@@ -114,6 +122,19 @@ public final class Partie {
     }
 }
 
-//case 2 3
+//attention couleur jeton sur console = null !=rouge
 //grille etre gagnant
+
+
 //inisialiser partie
+
+        //trou noir
+        // integrateur
+        //recup jeton
+
+//Main
+
+        //On crée deux joueurs
+        //On crée une partie incluant ces deux joueurs en paramètre
+        //On initialise la partie
+        //On la lance
