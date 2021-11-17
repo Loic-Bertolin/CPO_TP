@@ -114,3 +114,5 @@ public final class Partie {
 
 //case 2 3
 //grille
+//afficher grille voir jeton couluer
+//inisialiser partie

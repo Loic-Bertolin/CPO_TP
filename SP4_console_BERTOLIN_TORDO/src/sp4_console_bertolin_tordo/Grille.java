@@ -52,13 +52,7 @@ public class Grille {
     public void afficherGrilleSurConsole() {
         System.out.print("\n"+"|");
         for (int lignes = 0; lignes < 6; lignes++) {
-            for (int colonnes = 0; colonnes < 7; colonnes++) {
-                if (colonnes == 6) {
-                    colonnes = 0;
-                    lignes++;
-                    System.out.print("\n|");
-                }
-                
+            for (int colonnes = 0; colonnes < 7; colonnes++) {              
                 if ("Rouge".equals(CellulesJeu[lignes][colonnes].lireCouleurDuJeton())){
                     System.out.print("R|");
                 }
@@ -72,6 +66,7 @@ public class Grille {
                     System.out.print("-|");
                 }
             }
+            System.out.print("\n|");
         }
     }
 

@@ -28,11 +28,11 @@ public class SP4_console_BERTOLIN_TORDO {
         //On la lance
 */
         Jeton j=new Jeton ("rouge");
-        System.out.print(j.lireCouleur());
+        System.out.println(j.lireCouleur());
         Cellule c=new Cellule();
-        System.out.print(c.lireCouleurDuJeton());
+        System.out.println(c.lireCouleurDuJeton());
         c.affecterJeton(j);
-        System.out.print(c.lireCouleurDuJeton());
+        System.out.println(c.lireCouleurDuJeton());
         Grille g=new Grille();
         g.afficherGrilleSurConsole();
         g.ajouterJetonDansColonne(j, 5);
