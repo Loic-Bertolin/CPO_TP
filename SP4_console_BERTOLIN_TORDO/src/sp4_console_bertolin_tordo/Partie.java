@@ -55,13 +55,15 @@ public final class Partie {
     }
 
     public void débuterPartie() {
-        if (ListeJoueurs[0] == joueurCourant) {
-            joueurCourant = ListeJoueurs[1];
-        } else {
-            joueurCourant = ListeJoueurs[0];
-        }
         inisialiserPartie();
         do {
+            if (ListeJoueurs[0] == joueurCourant) {
+                joueurCourant = ListeJoueurs[1];
+            } else {
+                joueurCourant = ListeJoueurs[0];
+            }
+            System.out.println("Tour suivant :" + joueurCourant.Nom);
+            grilleJeu.afficherGrilleSurConsole();
             System.out.println("1) Pose un jeton");
             System.out.println("2) Désintégrer un jeton");
             System.out.println("3) Récupérer un jeton");
@@ -76,23 +78,23 @@ public final class Partie {
                     case 1:
                         System.out.println("Quelle colonne jouer ? ");
                         int col = sc.nextInt();
+                        do {
+                            System.out.println("Erreur, il faut une des 7 colonnes");
+                            col = sc.nextInt();
+                        } while (col >= 1 && col <= 7);
                         joueurCourant.nombreJetonRestants--;
                         Jeton j = joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants];
-                        grilleJeu.ajouterJetonDansColonne(j, col);
+                        grilleJeu.ajouterJetonDansColonne(j, col + 1);
                         joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants] = null;
-                        grilleJeu.afficherGrilleSurConsole();
 
                     case 2:
-                        grilleJeu.afficherGrilleSurConsole();
 
                     case 3:
-                        grilleJeu.afficherGrilleSurConsole();
 
                 }
-                System.out.println("Tour suivant :" + joueurCourant.Nom);
             }
-        }while (grilleJeu.etreGagnantePourJoueur(joueurCourant) == true);
-            System.out.println(joueurCourant.Nom + " a gagné, le jeu est terminé.");
+        } while ((grilleJeu.etreGagnantePourJoueur(joueurCourant) == true) || (grilleJeu.etreRemplie() == true));
+        System.out.println(joueurCourant.Nom + " a gagné, le jeu est terminé.");
     }
 
     public void attribuerCouleursAuxJoueurs() {
@@ -113,6 +115,5 @@ public final class Partie {
 }
 
 //case 2 3
-//grille
-//afficher grille voir jeton couluer
+//grille etre gagnant
 //inisialiser partie

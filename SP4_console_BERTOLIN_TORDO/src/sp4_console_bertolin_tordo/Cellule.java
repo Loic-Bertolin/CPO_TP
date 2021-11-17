@@ -22,11 +22,11 @@ public class Cellule {
 
     public boolean affecterJeton(Jeton unJeton) {
         if (jetonCourant == null) {
-            jetonCourant = unJeton;
-            return true;
+            return false;
         } 
         else {
-            return false;
+            jetonCourant=unJeton;
+            return true;
         }
     }
 

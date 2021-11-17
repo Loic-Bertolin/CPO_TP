@@ -21,13 +21,13 @@ public class Grille {
     }
 
     public boolean ajouterJetonDansColonne(Jeton unJeton, int unecolonne) {
-        int lignes = 0;
-        do {
-            if (CellulesJeu[lignes][unecolonne].jetonCourant != null) {
-                lignes++;
+        for (int i=0;i<5;i++){
+            if(CellulesJeu[i][unecolonne].jetonCourant==null){
+                CellulesJeu[i][unecolonne].jetonCourant=unJeton;
+                return true;
             }
-        } while (CellulesJeu[lignes][unecolonne].jetonCourant != null && lignes==6);
-        return CellulesJeu[lignes][unecolonne].affecterJeton(unJeton);
+        }
+        return false;
     }
 
     public boolean etreRemplie() {
@@ -51,7 +51,7 @@ public class Grille {
 
     public void afficherGrilleSurConsole() {
         System.out.print("\n"+"|");
-        for (int lignes = 6; lignes >0; lignes--) {
+        for (int lignes = 5; lignes >=0; lignes--) {
             for (int colonnes = 0; colonnes < 7; colonnes++) {              
                 if ("Rouge".equals(CellulesJeu[lignes][colonnes].lireCouleurDuJeton())){
                     System.out.print("R|");
@@ -66,7 +66,7 @@ public class Grille {
                     System.out.print("-|");
                 }
             }
-            if (lignes<5){
+            if (lignes>0){
             System.out.print("\n|");
             }
             else{

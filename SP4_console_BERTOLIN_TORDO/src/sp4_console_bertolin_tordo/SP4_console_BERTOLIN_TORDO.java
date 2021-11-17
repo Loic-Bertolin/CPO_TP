@@ -37,6 +37,11 @@ public class SP4_console_BERTOLIN_TORDO {
         g.afficherGrilleSurConsole();
         g.ajouterJetonDansColonne(j, 5);
         g.afficherGrilleSurConsole();
+        g.ajouterJetonDansColonne(j, 5);
+        g.afficherGrilleSurConsole();
+        
+        g.ajouterJetonDansColonne(j, 5);
+        g.afficherGrilleSurConsole();
         
         
     }
