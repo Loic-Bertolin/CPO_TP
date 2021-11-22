@@ -19,11 +19,12 @@ public class SP4_console_BERTOLIN_TORDO {
      *12/11/21
      */
     public static void main(String[] args) {
-        /*System.out.println("Bienvenue au Puissance 4");
+        
+        System.out.println("Bienvenue au Puissance 4");
         Partie une_partie = new Partie();
         une_partie.débuterPartie();
-        */
-        
+       
+    /*
         Jeton j=new Jeton ("Rouge");
         System.out.println(j.lireCouleur());
         Cellule c=new Cellule();
@@ -41,7 +42,7 @@ public class SP4_console_BERTOLIN_TORDO {
         g.afficherGrilleSurConsole();        
         g.ajouterJetonDansColonne(j, 5);
         g.afficherGrilleSurConsole();
-
+*/
         
         
     }

@@ -17,39 +17,34 @@ public final class Partie {
     Joueur joueurCourant;
     Grille grilleJeu = new Grille();
 
-    public Partie(Joueur joueur1, Joueur joueur2) {
-        ListeJoueurs[0] = joueur1;
-        ListeJoueurs[1] = joueur2;
-        attribuerCouleursAuxJoueurs();
-
+    public Partie() {
 
     }
 
     public void inisialiserPartie() {
         grilleJeu.viderGrille(); // créé et afficher grille
-        
-        Scanner sc = new Scanner ( System.in);
+
+        Scanner sc = new Scanner(System.in);
         System.out.println("Entrer le nom du premier joueur :");
-        Joueur joueur1 = new Joueur( sc.nextLine());
+        Joueur joueur1 = new Joueur(sc.nextLine());
         System.out.println("Entrer le nom du deuxiéme joueur :");
-        Joueur joueur2 = new Joueur( sc.nextLine());
+        Joueur joueur2 = new Joueur(sc.nextLine());
         ListeJoueurs[0] = joueur1;
         ListeJoueurs[1] = joueur2;
-        
+
         //grilleJeu.afficherGrilleSurConsole();
-        
         attribuerCouleursAuxJoueurs();
-        
+
         Random couleur = new Random();
         int alea = couleur.nextInt(1);
         if (alea == 0) {
             joueurCourant = ListeJoueurs[0];
-            System.out.println(ListeJoueurs[0].Nom + "commence");
+            System.out.println(ListeJoueurs[0].Nom + " commence");
         } else {
             joueurCourant = ListeJoueurs[1];
-            System.out.println(ListeJoueurs[1].Nom + "commence");
+            System.out.println(ListeJoueurs[1].Nom + " commence");
         }
-                
+
         for (int i = 0; i < 21; i++) { //donner les jetons aux joueurs
             Jeton unJeton = new Jeton("Jaune");
             ListeJoueurs[0].ListeJetons[i] = unJeton;
@@ -61,13 +56,13 @@ public final class Partie {
         for (int i = 0; i < 5; i++) {
             int lig = position.nextInt(5);
             int col = position.nextInt(6);
-            if (compteur<2){
-                if (!grilleJeu.placerDesintegrateur(lig, col)){
+            if (compteur < 2) {
+                if (!grilleJeu.placerDesintegrateur(lig, col)) {
                     compteur--;
                 }
-            compteur++;
+                compteur++;
             }
-            if(!grilleJeu.placerTrouNoir(lig, col)){
+            if (!grilleJeu.placerTrouNoir(lig, col)) {
                 i--;
             }
         }
@@ -76,57 +71,82 @@ public final class Partie {
 
     public void débuterPartie() {
         inisialiserPartie();
-        do {
-            if (ListeJoueurs[0] == joueurCourant) {
-                joueurCourant = ListeJoueurs[1];
-            } else {
-                joueurCourant = ListeJoueurs[0];
-            }
-            System.out.println("Tour suivant :" + joueurCourant.Nom);
+        while ((grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0]) == false) && (grilleJeu.etreRemplie() == false) && (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1]) == false)) {
+
             grilleJeu.afficherGrilleSurConsole();
             System.out.println("1) Pose un jeton");
             System.out.println("2) Désintégrer un jeton");
             System.out.println("3) Récupérer un jeton");
             Scanner sc = new Scanner(System.in);
             int action = sc.nextInt();
-            do {
+            while (action < 1 && action > 3) {
                 System.out.println("Erreur, il faut une des 3 actions");
                 action = sc.nextInt();
-            } while (action >= 1 && action <= 3);
-            for (int i = 0; i < 42; i++) {
-                switch (action) {
-                    case 1:
-                        boolean result;
-                        System.out.println("Quelle colonne jouer ? ");
-                        int col = sc.nextInt() -1 ;
-                        do {
-                            System.out.println("Erreur, saisir une colonne colonnes");
-                            col = sc.nextInt()-1;
-                        } while (col >= 1 && col <= 7);
-                        joueurCourant.nombreJetonRestants--;
-                        Jeton j = joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants];
-                        grilleJeu.ajouterJetonDansColonne(j, col + 1);
-                        joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants] = null;
-
-                    case 2:
-                        System.out.println("Quelle colonne jouer ? ");
-                        int col2 = sc.nextInt();
-                        System.out.println("Quelle ligne jouer ? ");
-                        int lig2 = sc.nextInt();
-                        grilleJeu.supprimerJeton(lig2, col2);
-                        grilleJeu.tasserGrille(col2);
-
-                    case 3:
-                        System.out.println("Quelle colonne jouer ? ");
-                        int col3 = sc.nextInt();
-                        System.out.println("Quelle ligne jouer ? ");
-                        int lig3 = sc.nextInt();
-                        joueurCourant.ajouterJeton(grilleJeu.recupererJeton(lig3,col3));
-                        grilleJeu.supprimerJeton(lig3, col3);
-                        grilleJeu.tasserGrille(col3);
+            }
+            if (action == 2) {
+                if (joueurCourant.nombreDesintegrateurs == 0) {
+                    System.out.println("Action non valide, plus de désintégrateur");
+                    while (action != 1 && action != 3) {
+                        System.out.println("Erreur, il faut choisir entre 1 et 3");
+                        action = sc.nextInt();
+                    }
                 }
             }
-        } while ((grilleJeu.etreGagnantePourJoueur(joueurCourant) == true) || (grilleJeu.etreRemplie() == true));
+            switch (action) {
+                case 1:
+                    boolean result;
+                    System.out.println("Quelle colonne jouer ? ");
+                    int col = sc.nextInt() - 1;
+                    while (col < 0 || col > 6) {
+                        System.out.println("Erreur, saisir une colonne");
+                        col = sc.nextInt() - 1;
+                    }
+                    result = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants], col);
+                    while (result == false) {
+                        System.out.print("Colonne pleine, choisissez une autre colonne");
+                        col = sc.nextInt() - 1;
+                        result = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants], col);
+                    }
+                    grilleJeu.afficherGrilleSurConsole();
+                    break;
+                /*joueurCourant.nombreJetonRestants--;
+                        Jeton j = joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants];
+                        grilleJeu.ajouterJetonDansColonne(j, col + 1);
+                        joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants] = null;*/
+
+                case 2:
+                    System.out.println("Quelle ligne jouer ? ");
+                    int lig2 = sc.nextInt();
+                    System.out.println("Quelle colonne jouer ? ");
+                    int col2 = sc.nextInt();
+                    grilleJeu.supprimerJeton(lig2, col2);
+                    grilleJeu.tasserGrille(col2);
+                    grilleJeu.afficherGrilleSurConsole();
+                    joueurCourant.nombreDesintegrateurs--;
+                    System.out.println("Nombre de désintégrateur : " + joueurCourant.nombreDesintegrateurs + "du " + joueurCourant);
+                    break;
+
+                case 3:
+                    System.out.println("Quelle colonne jouer ? ");
+                    int col3 = sc.nextInt();
+                    System.out.println("Quelle ligne jouer ? ");
+                    int lig3 = sc.nextInt();
+                    joueurCourant.ajouterJeton(grilleJeu.recupererJeton(lig3, col3));
+                    grilleJeu.supprimerJeton(lig3, col3);
+                    grilleJeu.tasserGrille(col3);
+                    grilleJeu.afficherGrilleSurConsole();
+                    break;
+            }
+            if (grilleJeu.etreGagnantePourJoueur(joueurCourant) == false) {
+                if (ListeJoueurs[0] == joueurCourant) {
+                    joueurCourant = ListeJoueurs[1];
+                } else {
+                    joueurCourant = ListeJoueurs[0];
+                }
+                System.out.println("Tour suivant :" + joueurCourant.Nom);
+            }
+
+        }
         System.out.println(joueurCourant.Nom + " a gagné, le jeu est terminé.");
     }
 
@@ -135,31 +155,22 @@ public final class Partie {
         int alea = couleur.nextInt(1);
         if (alea == 0) {
             ListeJoueurs[0].affecterCouleur("Jaune");
-            System.out.println(ListeJoueurs[0].Nom + "est Jaune");
+            System.out.println(ListeJoueurs[0].Nom + " est Jaune");
             ListeJoueurs[1].affecterCouleur("Rouge");
-            System.out.println(ListeJoueurs[1].Nom + "est Rouge");
+            System.out.println(ListeJoueurs[1].Nom + " est Rouge");
         } else {
             ListeJoueurs[0].affecterCouleur("Rouge");
-            System.out.println(ListeJoueurs[0].Nom + "est Rouge");
+            System.out.println(ListeJoueurs[0].Nom + " est Rouge");
             ListeJoueurs[1].affecterCouleur("Jaune");
-            System.out.println(ListeJoueurs[1].Nom + "est Jaune");
+            System.out.println(ListeJoueurs[1].Nom + " est Jaune");
         }
     }
+
 }
 
-//attention couleur jeton sur console = null !=rouge
 //grille etre gagnant
-
-
 //inisialiser partie
+//trou noir
+//integrateur
+//recup jeton
 
-        //trou noir
-        // integrateur
-        //recup jeton
-
-//Main
-
-        //On crée deux joueurs
-        //On crée une partie incluant ces deux joueurs en paramètre
-        //On initialise la partie
-        //On la lance
