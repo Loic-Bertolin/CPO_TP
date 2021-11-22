@@ -22,29 +22,7 @@ public class SP4_console_BERTOLIN_TORDO {
         
         System.out.println("Bienvenue au Puissance 4");
         Partie une_partie = new Partie();
-        une_partie.débuterPartie();
-       
-    /*
-        Jeton j=new Jeton ("Rouge");
-        System.out.println(j.lireCouleur());
-        Cellule c=new Cellule();
-        System.out.println(c.lireCouleurDuJeton());
-        c.affecterJeton(j);
-        System.out.println(c.lireCouleurDuJeton());
-        Grille g=new Grille();
-        g.afficherGrilleSurConsole();
-        g.ajouterJetonDansColonne(j, 5);
-        g.afficherGrilleSurConsole();
-        g.ajouterJetonDansColonne(j, 5);
-        g.afficherGrilleSurConsole();
-        
-        g.ajouterJetonDansColonne(j, 5);
-        g.afficherGrilleSurConsole();        
-        g.ajouterJetonDansColonne(j, 5);
-        g.afficherGrilleSurConsole();
-*/
-        
-        
+        une_partie.débuterPartie();   
     }
     
 }
