@@ -114,10 +114,16 @@ public final class Partie {
                     joueurCourant.nombreJetonRestants--;
                     result = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants], col);
                     while (result == false) {
-                        System.out.print("Colonne pleine, choisissez une autre colonne");
+                        System.out.println("Colonne pleine, choisissez une autre colonne");
                         col = sc.nextInt() - 1;
                         result = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants], col);
                     }
+                    int i =0;
+                   while(grilleJeu.CellulesJeu[i][col].jetonCourant!=null){
+                       i++;
+                   }
+                   // regarder si on a un désintégrateur sur i col
+
                     grilleJeu.afficherGrilleSurConsole();
                 }
 

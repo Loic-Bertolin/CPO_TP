@@ -21,7 +21,7 @@ public class Grille {
     }
 
     public boolean ajouterJetonDansColonne(Jeton unJeton, int unecolonne) {
-        for (int i=0;i<5;i++){
+        for (int i=0;i<6;i++){
             if(CellulesJeu[i][unecolonne].affecterJeton(unJeton)==true){
                 return true;
             }
@@ -60,6 +60,12 @@ public class Grille {
                 }
                 else if (CellulesJeu[lignes][colonnes].presenceTrouNoir()==true){
                     System.out.print("N|");
+                }
+                else if (CellulesJeu[lignes][colonnes].presenceDesintegrateur()==true){
+                    //if(CellulesJeu[lignes][colonnes].presenceTrouNoir()==true){
+                        
+                   // }
+                    System.out.print("D|");
                 }
                 else{
                     System.out.print("-|");
