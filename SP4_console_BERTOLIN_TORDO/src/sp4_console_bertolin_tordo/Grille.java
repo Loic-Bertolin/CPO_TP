@@ -54,13 +54,13 @@ public class Grille {
         for (int lignes = 5; lignes >=0; lignes--) {
             for (int colonnes = 0; colonnes < 7; colonnes++) {              
                 if ("Rouge".equals(CellulesJeu[lignes][colonnes].lireCouleurDuJeton())){
-                    System.out.print("R|");
+                    System.out.print("\u001B[31mR|");
                 }
                 else if ("Jaune".equals(CellulesJeu[lignes][colonnes].lireCouleurDuJeton())){
-                    System.out.print("J|");
+                    System.out.print("\u001B[33mJ|");
                 }
                 else if (CellulesJeu[lignes][colonnes].presenceTrouNoir()==true){
-                    System.out.print("N|");
+                    System.out.print("\u001B[36mN|");
                 }
                 else{
                     System.out.print("-|");

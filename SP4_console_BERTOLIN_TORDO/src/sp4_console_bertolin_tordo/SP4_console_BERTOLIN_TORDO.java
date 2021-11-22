@@ -19,11 +19,10 @@ public class SP4_console_BERTOLIN_TORDO {
      *12/11/21
      */
     public static void main(String[] args) {
-        Scanner sc = new Scanner ( System.in);
-        System.out.println("Entrer le nom du premier joueur :");
-        Joueur joueur1 = new Joueur( sc.nextLine());
-        System.out.println("Entrer le nom du deuxiéme joueur :");
-        Joueur joueur2 = new Joueur( sc.nextLine());
+        /*System.out.println("Bienvenue au Puissance 4");
+        Partie une_partie = new Partie();
+        une_partie.débuterPartie();
+        */
         
         Jeton j=new Jeton ("Rouge");
         System.out.println(j.lireCouleur());
@@ -42,7 +41,7 @@ public class SP4_console_BERTOLIN_TORDO {
         g.afficherGrilleSurConsole();        
         g.ajouterJetonDansColonne(j, 5);
         g.afficherGrilleSurConsole();
-        g.etreGagnantePourJoueur(joueur1);
+
         
         
     }

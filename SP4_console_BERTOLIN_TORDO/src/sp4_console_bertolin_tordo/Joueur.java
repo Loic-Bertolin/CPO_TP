@@ -38,10 +38,10 @@ public class Joueur {
         return true;
     }
 
-    public int obtenirDesintegrateur() {
+    public void obtenirDesintegrateur() {
         nombreDesintegrateurs++;
-        return nombreDesintegrateurs;
     }
+    
     public boolean utiliserDesintegrateur() {
         if (nombreDesintegrateurs==0){
             return false;
