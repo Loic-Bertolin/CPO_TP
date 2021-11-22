@@ -36,8 +36,8 @@ public final class Partie {
         attribuerCouleursAuxJoueurs();
 
         Random couleur = new Random();
-        int alea = couleur.nextInt(1);
-        if (alea == 0) {
+        int alea = couleur.nextInt(2);
+        if (alea == 1) {
             joueurCourant = ListeJoueurs[0];
             System.out.println(ListeJoueurs[0].Nom + " commence");
         } else {
@@ -66,7 +66,7 @@ public final class Partie {
                 i--;
             }
         }
-        grilleJeu.afficherGrilleSurConsole();
+        //grilleJeu.afficherGrilleSurConsole();
     }
 
     public void débuterPartie() {
@@ -93,7 +93,7 @@ public final class Partie {
                 }
             }
             switch (action) {
-                case 1:
+                case 1 -> {
                     boolean result;
                     System.out.println("Quelle colonne jouer ? ");
                     int col = sc.nextInt() - 1;
@@ -108,34 +108,38 @@ public final class Partie {
                         result = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants], col);
                     }
                     grilleJeu.afficherGrilleSurConsole();
-                    break;
+                    /*joueurCourant.nombreJetonRestants--;
+                    Jeton j = joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants];
+                    grilleJeu.ajouterJetonDansColonne(j, col + 1);
+                    joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants] = null;*/
+                }
                 /*joueurCourant.nombreJetonRestants--;
                         Jeton j = joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants];
                         grilleJeu.ajouterJetonDansColonne(j, col + 1);
                         joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants] = null;*/
 
-                case 2:
+                case 2 -> {
                     System.out.println("Quelle ligne jouer ? ");
-                    int lig2 = sc.nextInt();
+                    int lig2 = sc.nextInt()-1;
                     System.out.println("Quelle colonne jouer ? ");
-                    int col2 = sc.nextInt();
+                    int col2 = sc.nextInt()-1;
                     grilleJeu.supprimerJeton(lig2, col2);
                     grilleJeu.tasserGrille(col2);
                     grilleJeu.afficherGrilleSurConsole();
                     joueurCourant.nombreDesintegrateurs--;
                     System.out.println("Nombre de désintégrateur : " + joueurCourant.nombreDesintegrateurs + "du " + joueurCourant);
-                    break;
+                }
 
-                case 3:
-                    System.out.println("Quelle colonne jouer ? ");
-                    int col3 = sc.nextInt();
+                case 3 -> {
                     System.out.println("Quelle ligne jouer ? ");
-                    int lig3 = sc.nextInt();
+                    int lig3 = sc.nextInt()-1;
+                    System.out.println("Quelle colonne jouer ? ");
+                    int col3 = sc.nextInt()-1;
                     joueurCourant.ajouterJeton(grilleJeu.recupererJeton(lig3, col3));
                     grilleJeu.supprimerJeton(lig3, col3);
                     grilleJeu.tasserGrille(col3);
                     grilleJeu.afficherGrilleSurConsole();
-                    break;
+                }
             }
             if (grilleJeu.etreGagnantePourJoueur(joueurCourant) == false) {
                 if (ListeJoueurs[0] == joueurCourant) {
@@ -152,8 +156,8 @@ public final class Partie {
 
     public void attribuerCouleursAuxJoueurs() {
         Random couleur = new Random();
-        int alea = couleur.nextInt(1);
-        if (alea == 0) {
+        int alea = couleur.nextInt(2);
+        if (alea == 1) {
             ListeJoueurs[0].affecterCouleur("Jaune");
             System.out.println(ListeJoueurs[0].Nom + " est Jaune");
             ListeJoueurs[1].affecterCouleur("Rouge");
