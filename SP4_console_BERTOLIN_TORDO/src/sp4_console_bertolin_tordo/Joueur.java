@@ -25,17 +25,15 @@ public class Joueur {
     }
 
     public boolean ajouterJeton(Jeton unJeton) {
-        int i = 0;
-        do {
-            if (ListeJetons[i] != null) {
-                i++;
-            if (i==21){
-                return false;
-            }
-            }
-        } while (ListeJetons[i] != null);
-        ListeJetons[i] = unJeton;
-        return true;
+        //int i = 0;
+        if (nombreJetonRestants==21){
+            return false;
+        }
+        else{
+             ListeJetons[nombreJetonRestants] = unJeton;
+             nombreJetonRestants++;
+             return true;
+        }
     }
 
     public void obtenirDesintegrateur() {

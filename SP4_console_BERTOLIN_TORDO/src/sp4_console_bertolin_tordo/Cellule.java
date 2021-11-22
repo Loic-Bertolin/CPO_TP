@@ -26,6 +26,9 @@ public class Cellule {
         } 
         else {
             jetonCourant=unJeton;
+            activerTrouNoir();
+            //if(recupererDesintegrateur()==true){
+            //}
             return true;
         }
     }
@@ -94,6 +97,7 @@ public class Cellule {
             return false;
         }
         else{
+            jetonCourant = null;
             trouNoir = false;
             return true;
         }
