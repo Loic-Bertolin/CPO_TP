@@ -46,9 +46,9 @@ public final class Partie {
         }
 
         for (int i = 0; i < 21; i++) { //donner les jetons aux joueurs
-            Jeton unJeton = new Jeton("Jaune");
+            Jeton unJeton = new Jeton(ListeJoueurs[0].Couleur);
             ListeJoueurs[0].ajouterJeton(unJeton);
-            Jeton unJeton2 = new Jeton("Rouge");
+            Jeton unJeton2 = new Jeton(ListeJoueurs[1].Couleur);
             ListeJoueurs[1].ajouterJeton(unJeton2);
 
         }
@@ -112,26 +112,25 @@ public final class Partie {
                     }
                     joueurCourant.nombreJetonRestants--;
                     
-                    result = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants], col);
-                    while (result == false) {
-                        System.out.println("Colonne pleine, choisissez une autre colonne");
-                        col = sc.nextInt() - 1;
-                        result = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants], col);
-                    }
-                    int i = 0;
+                       int i = 0;
                     while (grilleJeu.CellulesJeu[i][col].jetonCourant != null) {
                         i++;
                         if (i==5){
                             break;
                         }
                     }
-                    if (i-1<0){
-                        i=1;
-                    }
-                    if (grilleJeu.CellulesJeu[i-1][col].presenceDesintegrateur() == true) {
-                        grilleJeu.CellulesJeu[i-1][col].recupererDesintegrateur();
+                    if (grilleJeu.CellulesJeu[i][col].presenceDesintegrateur() == true) {
+                        grilleJeu.CellulesJeu[i][col].recupererDesintegrateur();
                         joueurCourant.nombreDesintegrateurs++;
                     }
+                    
+                    result = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants], col);
+                    while (result == false) {
+                        System.out.println("Colonne pleine, choisissez une autre colonne");
+                        col = sc.nextInt() - 1;
+                        result = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonRestants], col);
+                    }
+                 
                     // regarder si on a un désintégrateur sur (i,col)
 
                     grilleJeu.afficherGrilleSurConsole();
@@ -211,8 +210,5 @@ public final class Partie {
 }
 
 
-// on inverse les couleurs de départ
-// trou + désintégrateur on arrive pas a faire les 2 en même temps
 // on ajoute un jeton (autre couleur) au lieu de le récupérer
-// si pierre commence et jaune --> il devient rouge
-// si loic commence et rouge --> il devient jaune
+
