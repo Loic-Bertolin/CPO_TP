@@ -21,8 +21,8 @@ public class Grille {
     }
 
     public boolean ajouterJetonDansColonne(Jeton unJeton, int unecolonne) {
-        for (int i=0;i<6;i++){
-            if(CellulesJeu[i][unecolonne].affecterJeton(unJeton)==true){
+        for (int i = 0; i < 6; i++) {
+            if (CellulesJeu[i][unecolonne].affecterJeton(unJeton) == true) {
                 return true;
             }
         }
@@ -49,32 +49,27 @@ public class Grille {
     }
 
     public void afficherGrilleSurConsole() {
-        System.out.print("\n"+"|");
-        for (int lignes = 5; lignes >=0; lignes--) {
-            for (int colonnes = 0; colonnes < 7; colonnes++) {              
-                if ("Rouge".equals(CellulesJeu[lignes][colonnes].lireCouleurDuJeton())){
+        System.out.print("\n" + "|");
+        for (int lignes = 5; lignes >= 0; lignes--) {
+            for (int colonnes = 0; colonnes < 7; colonnes++) {
+                if ("Rouge".equals(CellulesJeu[lignes][colonnes].lireCouleurDuJeton())) {
                     System.out.print("R|");
-                }
-                else if ("Jaune".equals(CellulesJeu[lignes][colonnes].lireCouleurDuJeton())){
+                } else if ("Jaune".equals(CellulesJeu[lignes][colonnes].lireCouleurDuJeton())) {
                     System.out.print("J|");
-                }
-                else if (CellulesJeu[lignes][colonnes].presenceTrouNoir()==true){
+                } else if (CellulesJeu[lignes][colonnes].presenceTrouNoir() == true) {
                     System.out.print("N|");
-                }
-                else if (CellulesJeu[lignes][colonnes].presenceDesintegrateur()==true){
+                } else if (CellulesJeu[lignes][colonnes].presenceDesintegrateur() == true) {
                     //if(CellulesJeu[lignes][colonnes].presenceTrouNoir()==true){
-                        
-                   // }
+
+                    // }
                     System.out.print("D|");
-                }
-                else{
+                } else {
                     System.out.print("-|");
                 }
             }
-            if (lignes>0){
-            System.out.print("\n|");
-            }
-            else{
+            if (lignes > 0) {
+                System.out.print("\n|");
+            } else {
                 System.out.println("");
             }
         }
@@ -93,7 +88,7 @@ public class Grille {
         //verif lignes
         for (int lignes = 0; lignes < 5; lignes++) {
             for (int colonnes = 0; colonnes < 3; colonnes++) {
-               
+
                 if (CellulesJeu[lignes][colonnes].jetonCourant == null) {
                     colonnes++;
                 } else {
@@ -107,7 +102,7 @@ public class Grille {
                             if (compteur == 4) {
                                 return true;
                             }
-                        } 
+                        }
 
                     }
                 }
@@ -129,7 +124,7 @@ public class Grille {
                             if (compteur == 4) {
                                 return true;
                             }
-                        } 
+                        }
                     }
                 }
             }
@@ -150,7 +145,7 @@ public class Grille {
                             if (compteur == 4) {
                                 return true;
                             }
-                        } 
+                        }
                     }
                 }
             }
@@ -171,7 +166,7 @@ public class Grille {
                             if (compteur == 4) {
                                 return true;
                             }
-                        } 
+                        }
                     }
                 }
             }
@@ -181,13 +176,13 @@ public class Grille {
 
     public void tasserGrille(int unecolonne) {
         int lignes = 0;
-        do {
-            if (CellulesJeu[lignes][unecolonne].jetonCourant != null) {
+        while (CellulesJeu[lignes][unecolonne].jetonCourant != null) {
                 lignes++;
-            }
-        } while (CellulesJeu[lignes][unecolonne].jetonCourant != null);
-        for (int i = lignes; i < 4; i++) {
-            CellulesJeu[lignes][unecolonne].jetonCourant = CellulesJeu[lignes + 1][unecolonne].jetonCourant;
+            
+        }
+        for (int i = lignes; i < 5; i++) {
+            CellulesJeu[i][unecolonne].jetonCourant = CellulesJeu[i + 1][unecolonne].jetonCourant;
+            CellulesJeu[i+1][unecolonne].jetonCourant = null;
         }
         CellulesJeu[5][unecolonne].jetonCourant = null;
     }
