@@ -44,6 +44,8 @@ public class Grille {
         for (int lignes = 0; lignes < 6; lignes++) {
             for (int colonnes = 0; colonnes < 7; colonnes++) {
                 CellulesJeu[lignes][colonnes].jetonCourant = null;
+                CellulesJeu[lignes][colonnes].desintegrateur = false;
+                CellulesJeu[lignes][colonnes].trouNoir = false;
             }
         }
     }

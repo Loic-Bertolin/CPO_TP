@@ -56,8 +56,8 @@ public final class Partie {
         Random position = new Random();
         int compteur = 0;
         for (int i = 0; i < 5; i++) {
-            int lig = position.nextInt(5);
-            int col = position.nextInt(6);
+            int lig = position.nextInt(6);
+            int col = position.nextInt(7);
             if (compteur < 2) {
                 if (!grilleJeu.placerDesintegrateur(lig, col)) {
                     compteur--;

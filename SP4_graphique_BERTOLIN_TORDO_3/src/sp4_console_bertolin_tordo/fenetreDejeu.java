@@ -4,17 +4,34 @@
  */
 package sp4_console_bertolin_tordo;
 
+import java.util.Random;
+import java.util.Scanner;
+
 /**
  *
  * @author loicb
  */
 public class fenetreDejeu extends javax.swing.JFrame {
 
+    Joueur[] ListeJoueurs = new Joueur[2];
+    Joueur joueurCourant;
+    Grille grilleJeu = new Grille();
+
     /**
      * Creates new form fenetreDejeu
      */
     public fenetreDejeu() {
         initComponents();
+        panneau_info_joueurs.setVisible(false);
+        panneau_info_partie.setVisible(false);
+
+        for (int i = 5; i >= 0; i--) {
+            for (int j = 0; j < 7; j++) {
+                CelluleGraphique cellGraph = new CelluleGraphique(grilleJeu.CellulesJeu[i][j]);
+                panneau_grille.add(cellGraph);
+
+            }
+        }
     }
 
     /**
@@ -42,13 +59,13 @@ public class fenetreDejeu extends javax.swing.JFrame {
         lbl_j2_nom = new javax.swing.JLabel();
         lbl_j2_couleur = new javax.swing.JLabel();
         lbl_j2_desint = new javax.swing.JLabel();
-        panneau_creation_partie = new javax.swing.JPanel();
+        panneau_info_partie = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         lbl_jcourant = new javax.swing.JLabel();
         message = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        panneau_info_partie = new javax.swing.JPanel();
+        panneau_creation_partie = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         nom_joueur1 = new javax.swing.JTextField();
@@ -115,42 +132,53 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
         getContentPane().add(panneau_info_joueurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 150, 290, 300));
 
-        panneau_creation_partie.setBackground(new java.awt.Color(204, 255, 204));
-        panneau_creation_partie.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panneau_info_partie.setBackground(new java.awt.Color(204, 255, 204));
+        panneau_info_partie.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel10.setText("Infos Jeu : ");
-        panneau_creation_partie.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        panneau_info_partie.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jLabel11.setText("Joueur Courant : ");
-        panneau_creation_partie.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        panneau_info_partie.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
         lbl_jcourant.setText("nomJoueur");
-        panneau_creation_partie.add(lbl_jcourant, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, -1, -1));
+        panneau_info_partie.add(lbl_jcourant, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, -1, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         message.setViewportView(jTextArea1);
 
-        panneau_creation_partie.add(message, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 240, 80));
+        panneau_info_partie.add(message, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 240, 80));
 
-        getContentPane().add(panneau_creation_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 460, 290, 170));
+        getContentPane().add(panneau_info_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 460, 290, 170));
 
-        panneau_info_partie.setBackground(new java.awt.Color(204, 255, 204));
-        panneau_info_partie.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panneau_creation_partie.setBackground(new java.awt.Color(204, 255, 204));
+        panneau_creation_partie.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Nom Joueur 1 : ");
-        panneau_info_partie.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        panneau_creation_partie.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jLabel2.setText("Nom Joueur 2 : ");
-        panneau_info_partie.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
-        panneau_info_partie.add(nom_joueur1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 100, -1));
-        panneau_info_partie.add(nom_joueur2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 100, -1));
+        panneau_creation_partie.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        nom_joueur1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nom_joueur1ActionPerformed(evt);
+            }
+        });
+        panneau_creation_partie.add(nom_joueur1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 100, -1));
+        panneau_creation_partie.add(nom_joueur2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 100, -1));
 
         btn_start.setText("Démarrer Partie");
-        panneau_info_partie.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
+        btn_start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_startActionPerformed(evt);
+            }
+        });
+        panneau_creation_partie.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
 
-        getContentPane().add(panneau_info_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 290, 130));
+        getContentPane().add(panneau_creation_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 290, 130));
 
         btn_col_6.setText("7");
         getContentPane().add(btn_col_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(626, 20, -1, -1));
@@ -194,6 +222,18 @@ public class fenetreDejeu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_col_3ActionPerformed
 
+    private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
+        panneau_info_joueurs.setVisible(true);
+        panneau_info_partie.setVisible(true);
+        inisialiserPartie();
+        panneau_grille.repaint();
+        btn_start.setEnabled(false);
+    }//GEN-LAST:event_btn_startActionPerformed
+
+    private void nom_joueur1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nom_joueur1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nom_joueur1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -227,6 +267,89 @@ public class fenetreDejeu extends javax.swing.JFrame {
                 new fenetreDejeu().setVisible(true);
             }
         });
+    }
+
+    public void inisialiserPartie() {
+        grilleJeu.viderGrille(); // créé et afficher grille
+
+        String nomJoueur1 = nom_joueur1.getText();
+        Joueur joueur1 = new Joueur(nomJoueur1);
+        String nomJoueur2 = nom_joueur2.getText();
+        Joueur joueur2 = new Joueur(nomJoueur2);
+        ListeJoueurs[0] = joueur1;
+        ListeJoueurs[1] = joueur2;
+
+        //grilleJeu.afficherGrilleSurConsole();
+        attribuerCouleursAuxJoueurs();
+
+       lbl_j1_nom.setText(nomJoueur1);
+       lbl_j2_nom.setText(nomJoueur2);
+       lbl_j1_couleur.setText(joueur1.Couleur);
+       lbl_j2_couleur.setText(joueur2.Couleur);
+       lbl_j1_desint.setText(joueur1.nombreDesintegrateurs+"");
+       lbl_j2_desint.setText(joueur2.nombreDesintegrateurs+"");
+        
+        Random couleur = new Random();
+        int alea = couleur.nextInt(2);
+        if (alea == 1) {
+            joueurCourant = ListeJoueurs[0];
+            System.out.println(ListeJoueurs[0].Nom + " commence");
+        } else {
+            joueurCourant = ListeJoueurs[1];
+            System.out.println(ListeJoueurs[1].Nom + " commence");
+        }
+
+        for (int i = 0; i < 21; i++) { //donner les jetons aux joueurs
+            Jeton unJeton = new Jeton(ListeJoueurs[0].Couleur);
+            ListeJoueurs[0].ajouterJeton(unJeton);
+            Jeton unJeton2 = new Jeton(ListeJoueurs[1].Couleur);
+            ListeJoueurs[1].ajouterJeton(unJeton2);
+
+        }
+        
+        lbl_jcourant.setText(joueurCourant.Nom);
+        Random position = new Random();
+        int compteur = 0;
+        for (int i = 0; i < 5; i++) {
+            int lig = position.nextInt(6);
+            int col = position.nextInt(7);
+            if (compteur < 2) {
+                if (!grilleJeu.placerDesintegrateur(lig, col)) {
+                    compteur--;
+                }
+                compteur++;
+            }
+            if (!grilleJeu.placerTrouNoir(lig, col)) {
+                i--;
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            int lig = position.nextInt(5);
+            int col = position.nextInt(6);
+            while(grilleJeu.CellulesJeu[lig][col].presenceTrouNoir()==true){
+                lig = position.nextInt(5);
+                col = position.nextInt(6);
+            }
+            if (!grilleJeu.placerDesintegrateur(lig, col)) {
+                i--;
+            }
+        }
+    }
+
+    public void attribuerCouleursAuxJoueurs() {
+        Random couleur = new Random();
+        int alea = couleur.nextInt(2);
+        if (alea == 1) {
+            ListeJoueurs[0].affecterCouleur("Jaune");
+            System.out.println(ListeJoueurs[0].Nom + " est Jaune");
+            ListeJoueurs[1].affecterCouleur("Rouge");
+            System.out.println(ListeJoueurs[1].Nom + " est Rouge");
+        } else {
+            ListeJoueurs[0].affecterCouleur("Rouge");
+            System.out.println(ListeJoueurs[0].Nom + " est Rouge");
+            ListeJoueurs[1].affecterCouleur("Jaune");
+            System.out.println(ListeJoueurs[1].Nom + " est Jaune");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
