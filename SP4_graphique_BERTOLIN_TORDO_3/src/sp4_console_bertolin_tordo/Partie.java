@@ -150,7 +150,7 @@ public final class Partie {
                         col2 = sc.nextInt() - 1;
                     }
                     grilleJeu.supprimerJeton(lig2, col2);
-                    grilleJeu.tasserGrille(col2);
+                    grilleJeu.tasserGrille();//col2
                     grilleJeu.afficherGrilleSurConsole();
                     joueurCourant.nombreDesintegrateurs--;
                     System.out.println("Nombre de désintégrateur : " + joueurCourant.nombreDesintegrateurs + "du " + joueurCourant);
@@ -171,7 +171,7 @@ public final class Partie {
                     }
                     //joueurCourant.ajouterJeton(grilleJeu.recupererJeton(lig3, col3));
                     grilleJeu.supprimerJeton(lig3, col3);
-                    grilleJeu.tasserGrille(col3);
+                    grilleJeu.tasserGrille();//col3
                     grilleJeu.afficherGrilleSurConsole();
                 }
             }
