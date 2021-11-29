@@ -20,14 +20,43 @@ public class Grille {
         }
     }
 
-    public boolean ajouterJetonDansColonne(Jeton unJeton, int unecolonne) {
+boolean ajouterJetonDansColonne(Jeton unJeton, int ind_colonne) {
         for (int i = 0; i < 6; i++) {
-            if (CellulesJeu[i][unecolonne].affecterJeton(unJeton) == true) {
+            if (CellulesJeu[i][ind_colonne].affecterJeton(unJeton) == true) {
                 return true;
             }
         }
         return false;
-    }
+    
+    
+    
+        /* // si la colonne est remplie, on s'arrete et on retourne false
+        if (colonneRemplie(ind_colonne)){
+            return false;
+        }
+        
+        // on recherche l'indice de la ligne où ajouter le jeton
+        // forcement cet indice existe 
+        int i = 0;
+        while (CellulesJeu[i][ind_colonne].jetonCourant != null) {
+            i++;
+        }
+
+        // on récupére un jeton dans la liste des jetons du joueur 
+        Jeton un_jeton = joueurCourant.retirerJeton();
+        // on ajoute le jeton dans la case en question
+        CellulesJeu[i][ind_colonne].jetonCourant = un_jeton;
+        // on récupère un potentiel désintegrateur
+        if (CellulesJeu[i][ind_colonne].presenceDesintegrateur()) {
+            CellulesJeu[i][ind_colonne].recupererDesintegrateur();
+            joueurCourant.nombreDesintegrateurs++;
+        }
+        // on active le potentiel trou noir
+        if (CellulesJeu[i][ind_colonne].presenceTrouNoir()) {
+           CellulesJeu[i][ind_colonne].activerTrouNoir();
+        }
+        return true;*/
+    } 
 
     public boolean etreRemplie() {
         for (int lignes = 0; lignes < 6; lignes++) {
@@ -98,10 +127,10 @@ public class Grille {
                     if (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() != couleur) {
                         colonnes++;
                     } else {
-                        int compteur = 1;
+                        int compteur = 0;
                         while (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes][colonnes + compteur].lireCouleurDuJeton()) {
                             compteur++;
-                            if (compteur == 4) {
+                            if (compteur == 3) {
                                 return true;
                             }
                         }
@@ -120,10 +149,10 @@ public class Grille {
                     if (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() != couleur) {
                         colonnes++;
                     } else {
-                        int compteur = 1;
+                        int compteur = 0;
                         while (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes + compteur][colonnes].lireCouleurDuJeton()) {
                             compteur++;
-                            if (compteur == 4) {
+                            if (compteur == 3) {
                                 return true;
                             }
                         }
@@ -141,10 +170,10 @@ public class Grille {
                     if (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() != couleur) {
                         colonnes++;
                     } else {
-                        int compteur = 1;
+                        int compteur = 0;
                         while (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes + compteur][colonnes + compteur].lireCouleurDuJeton()) {
                             compteur++;
-                            if (compteur == 4) {
+                            if (compteur == 3) {
                                 return true;
                             }
                         }
@@ -162,10 +191,10 @@ public class Grille {
                     if (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() != couleur) {
                         colonnes++;
                     } else {
-                        int compteur = 1;
+                        int compteur = 0;
                         while (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes - compteur][colonnes + compteur].lireCouleurDuJeton()) {
                             compteur++;
-                            if (compteur == 4) {
+                            if (compteur == 3) {
                                 return true;
                             }
                         }
@@ -190,12 +219,13 @@ public class Grille {
     }
 
     public boolean colonneRemplie(int unecolonne) {
-        for (int lignes = 0; lignes < 6; lignes++) {
+        /*for (int lignes = 0; lignes < 6; lignes++) {
             if (CellulesJeu[lignes][unecolonne] == null) {
                 return false;
             }
         }
-        return true;
+        return true;*/
+        return(CellulesJeu[4][unecolonne].jetonCourant!=null);
     }
 
     public boolean placerTrouNoir(int uneligne, int unecolonne) {
