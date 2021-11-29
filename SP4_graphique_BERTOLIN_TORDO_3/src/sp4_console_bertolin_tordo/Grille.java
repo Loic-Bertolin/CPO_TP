@@ -205,8 +205,14 @@ boolean ajouterJetonDansColonne(Jeton unJeton, int ind_colonne) {
         return false;
     }
 
-    public void tasserGrille(int unecolonne) {
-        int lignes = 0;
+    
+
+    void tasserGrille() {
+        for (int i = 0; i <7;i++){
+            tasserColonne(i);
+        }
+        
+        /*int lignes = 0;
         while (CellulesJeu[lignes][unecolonne].jetonCourant != null) {
                 lignes++;
             
@@ -215,8 +221,23 @@ boolean ajouterJetonDansColonne(Jeton unJeton, int ind_colonne) {
             CellulesJeu[i][unecolonne].jetonCourant = CellulesJeu[i + 1][unecolonne].jetonCourant;
             CellulesJeu[i+1][unecolonne].jetonCourant = null;
         }
-        CellulesJeu[5][unecolonne].jetonCourant = null;
+        CellulesJeu[5][unecolonne].jetonCourant = null;*/
     }
+    
+        void tasserColonne (int colonne){
+        for (int i = 0; i<6;i++){
+            if(i==5){
+                CellulesJeu[i][colonne].jetonCourant = null;
+            }
+            else{
+                if (CellulesJeu[i][colonne].jetonCourant == null){
+                    CellulesJeu[i][colonne].jetonCourant = CellulesJeu[i+1][colonne].jetonCourant;
+                    CellulesJeu[i+1][colonne].jetonCourant = null;
+                }
+            }
+        }
+    }
+    
 
     public boolean colonneRemplie(int unecolonne) {
         /*for (int lignes = 0; lignes < 6; lignes++) {
