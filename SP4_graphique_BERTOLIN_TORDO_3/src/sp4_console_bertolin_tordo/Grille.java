@@ -130,7 +130,7 @@ boolean ajouterJetonDansColonne(Jeton unJeton, int ind_colonne) {
                         int compteur = 0;
                         while (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes][colonnes + compteur].lireCouleurDuJeton()) {
                             compteur++;
-                            if (compteur == 3) {
+                            if (compteur == 4) {
                                 return true;
                             }
                         }
@@ -152,7 +152,7 @@ boolean ajouterJetonDansColonne(Jeton unJeton, int ind_colonne) {
                         int compteur = 0;
                         while (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes + compteur][colonnes].lireCouleurDuJeton()) {
                             compteur++;
-                            if (compteur == 3) {
+                            if (compteur == 4) {
                                 return true;
                             }
                         }
@@ -173,7 +173,7 @@ boolean ajouterJetonDansColonne(Jeton unJeton, int ind_colonne) {
                         int compteur = 0;
                         while (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes + compteur][colonnes + compteur].lireCouleurDuJeton()) {
                             compteur++;
-                            if (compteur == 3) {
+                            if (compteur == 4) {
                                 return true;
                             }
                         }
@@ -194,7 +194,7 @@ boolean ajouterJetonDansColonne(Jeton unJeton, int ind_colonne) {
                         int compteur = 0;
                         while (CellulesJeu[lignes][colonnes].lireCouleurDuJeton() == CellulesJeu[lignes - compteur][colonnes + compteur].lireCouleurDuJeton()) {
                             compteur++;
-                            if (compteur == 3) {
+                            if (compteur == 4) {
                                 return true;
                             }
                         }
@@ -246,7 +246,7 @@ boolean ajouterJetonDansColonne(Jeton unJeton, int ind_colonne) {
             }
         }
         return true;*/
-        return(CellulesJeu[4][unecolonne].jetonCourant!=null);
+        return(CellulesJeu[5][unecolonne].jetonCourant!=null);
     }
 
     public boolean placerTrouNoir(int uneligne, int unecolonne) {

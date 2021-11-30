@@ -39,6 +39,8 @@ public class fenetreDejeu extends javax.swing.JFrame {
                         if (c.jetonCourant.Couleur.equals(joueurCourant.Couleur)) {
                             textemessage.setText("le joueur " + joueurCourant.Nom + " récupère un de ces jetons");
                             Jeton jrecup = c.recupererJeton();
+                            c.supprimerJeton();
+                            grilleJeu.tasserGrille();
                             joueurCourant.ajouterJeton(jrecup);
                             joueurSuivant();
                         } else {
@@ -291,19 +293,21 @@ public class fenetreDejeu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_col_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_1ActionPerformed
-        joueurSuivant();
+        jouerDansColonne(1);
+        
         if (grilleJeu.colonneRemplie(1) == true) {
             btn_col_1.setEnabled(false);
         }
-        jouerDansColonne(1);
+        joueurSuivant();
     }//GEN-LAST:event_btn_col_1ActionPerformed
 
     private void btn_col_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_3ActionPerformed
-        joueurSuivant();
+        jouerDansColonne(3);
+        
         if (grilleJeu.colonneRemplie(3) == true) {
             btn_col_3.setEnabled(false);
         }
-        jouerDansColonne(3);
+        joueurSuivant();
     }//GEN-LAST:event_btn_col_3ActionPerformed
 
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
@@ -319,43 +323,48 @@ public class fenetreDejeu extends javax.swing.JFrame {
     }//GEN-LAST:event_nom_joueur1ActionPerformed
 
     private void btn_col_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_0ActionPerformed
-        joueurSuivant();
+        jouerDansColonne(0);
+        
         if (grilleJeu.colonneRemplie(0) == true) {
             btn_col_0.setEnabled(false);
         }
-        jouerDansColonne(0);
+        joueurSuivant();
     }//GEN-LAST:event_btn_col_0ActionPerformed
 
     private void btn_col_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_2ActionPerformed
-        joueurSuivant();
+        jouerDansColonne(2);
+        
         if (grilleJeu.colonneRemplie(2) == true) {
             btn_col_2.setEnabled(false);
         }
-        jouerDansColonne(2);
+        joueurSuivant();
     }//GEN-LAST:event_btn_col_2ActionPerformed
 
     private void btn_col_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_4ActionPerformed
-        joueurSuivant();
+        jouerDansColonne(4);
+        
         if (grilleJeu.colonneRemplie(4) == true) {
             btn_col_4.setEnabled(false);
         }
-        jouerDansColonne(4);
+        joueurSuivant();
     }//GEN-LAST:event_btn_col_4ActionPerformed
 
     private void btn_col_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_5ActionPerformed
-        joueurSuivant();
+        jouerDansColonne(5);
+        
         if (grilleJeu.colonneRemplie(5) == true) {
             btn_col_5.setEnabled(false);
         }
-        jouerDansColonne(5);
+        joueurSuivant();
     }//GEN-LAST:event_btn_col_5ActionPerformed
 
     private void btn_col_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_6ActionPerformed
-        joueurSuivant();
+        jouerDansColonne(6);
+        
         if (grilleJeu.colonneRemplie(6) == true) {
             btn_col_6.setEnabled(false);
         }
-        jouerDansColonne(6);
+        joueurSuivant();
     }//GEN-LAST:event_btn_col_6ActionPerformed
 
     public boolean jouerDansColonne(int indice_colonne) {
@@ -394,7 +403,7 @@ public class fenetreDejeu extends javax.swing.JFrame {
                 textemessage.setText("Victoire de " + ListeJoueurs[0].Nom + " faute de jeu de l'autre joueur");
             }
         }
-
+        grilleJeu.afficherGrilleSurConsole();
         if (result == true) {
             return true;
         } else {
