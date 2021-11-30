@@ -10,4 +10,15 @@ package mastermind_console_bertolin_tordo;
  */
 public class Partie {
     
+    //Grille G = new Grille();
+    
+    public Partie() {
+        
+    }
+    public void initialiserPartie(){
+        
+    }
+    public void debuterPartie(){
+        
+    }
 }
