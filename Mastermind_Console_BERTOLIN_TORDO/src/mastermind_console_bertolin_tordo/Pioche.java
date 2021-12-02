@@ -11,71 +11,58 @@ import java.util.ArrayList;
  * @author pierre
  */
 public class Pioche {
-    ArrayList<Pion> couleurRouge = new ArrayList<Pion>();
-    ArrayList<Pion> couleurJaune = new ArrayList<Pion>();
-    ArrayList<Pion> couleurVert = new ArrayList<Pion>();
-    ArrayList<Pion> couleurBleu = new ArrayList<Pion>();
-    ArrayList<Pion> couleurOrange = new ArrayList<Pion>();
-    ArrayList<Pion> couleurViolet = new ArrayList<Pion>();
-    ArrayList<Pion> couleurRose = new ArrayList<Pion>();
-    ArrayList<Pion> couleurBlanc = new ArrayList<Pion>();
+    ArrayList<Pion> couleurRouge = new ArrayList<>();
+    ArrayList<Pion> couleurJaune = new ArrayList<>();
+    ArrayList<Pion> couleurVert = new ArrayList<>();
+    ArrayList<Pion> couleurBleu = new ArrayList<>();
+    ArrayList<Pion> couleurOrange = new ArrayList<>();
+    ArrayList<Pion> couleurMarron = new ArrayList<>();
+    ArrayList<Pion> couleurFushia = new ArrayList<>();
+    ArrayList<Pion> couleurNoir = new ArrayList<>();
     
     public void ajouterPion(Pion unPion){
         
-        if(unPion.lireCouleur()=="Rouge"){
+        if("Rouge".equals(unPion.lireCouleur())){
             couleurRouge.add(unPion);
         }
-        else if(unPion.lireCouleur()=="Jaune"){
+        else if("Jaune".equals(unPion.lireCouleur())){
             couleurJaune.add(unPion);
         }
-        else if(unPion.lireCouleur()=="Vert"){
+        else if("Vert".equals(unPion.lireCouleur())){
             couleurVert.add(unPion);
         }
-        else if(unPion.lireCouleur()=="Bleu"){
+        else if("Bleu".equals(unPion.lireCouleur())){
             couleurBleu.add(unPion);
         }
-        else if(unPion.lireCouleur()=="Orange"){
+        else if("Orange".equals(unPion.lireCouleur())){
             couleurOrange.add(unPion);
         }
-        else if(unPion.lireCouleur()=="Violet"){
-            couleurViolet.add(unPion);
+        else if("Marron".equals(unPion.lireCouleur())){
+            couleurMarron.add(unPion);
         }
-        else if(unPion.lireCouleur()=="Rose"){
-            couleurRose.add(unPion);
+        else if("Fushia".equals(unPion.lireCouleur())){
+            couleurFushia.add(unPion);
         }
-        else if(unPion.lireCouleur()=="Blanc"){
-            couleurBlanc.add(unPion);
+        else if("Noir".equals(unPion.lireCouleur())){
+            couleurNoir.add(unPion);
         }
     }
     
     public Pion choisirPion(String uneCouleur){
-        if(uneCouleur=="Rouge"){
-            return couleurRouge.remove(0);
-        }
-        else if(uneCouleur=="Jaune"){
-            return couleurJaune.remove(0);
-        }
-        else if(uneCouleur=="Vert"){
-            return couleurVert.remove(0);
-        }
-        else if(uneCouleur=="Bleu"){
-            return couleurBleu.remove(0);
-        }
-        else if(uneCouleur=="Orange"){
-            return couleurOrange.remove(0);
-        }
-        else if(uneCouleur=="Violet"){
-           return couleurViolet.remove(0);
-        }
-        else if(uneCouleur=="Rose"){
-            return couleurRose.remove(0);
-        }
-        else if (uneCouleur=="Blanc"){
-            return couleurBlanc.remove(0);
-        }
-        else{
+        if(null==uneCouleur){
             return null;
         }
+        else return switch (uneCouleur) {
+            case "Rouge" -> couleurRouge.remove(0);
+            case "Jaune" -> couleurJaune.remove(0);
+            case "Vert" -> couleurVert.remove(0);
+            case "Bleu" -> couleurBleu.remove(0);
+            case "Orange" -> couleurOrange.remove(0);
+            case "Marron" -> couleurMarron.remove(0);
+            case "Fushia" -> couleurFushia.remove(0);
+            case "Noir" -> couleurNoir.remove(0);
+            default -> null;
+        };
     }
     
 }
