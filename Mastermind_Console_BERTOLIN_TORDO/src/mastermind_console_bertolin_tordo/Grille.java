@@ -126,6 +126,9 @@ public class Grille {
         int[] result = new int[2];
         result[0] = jetonBienPlace;
         result[1] = jetonBonneCouleur;
+        if (PionReponse[uneligne]==null){
+            return result;
+        }
         for (int i = 0; i < 4; i++) {
             if (PionReponse[uneligne][i].lireCouleur() == PionJeu[uneligne][i].lireCouleur()) {
                 jetonBienPlace++;

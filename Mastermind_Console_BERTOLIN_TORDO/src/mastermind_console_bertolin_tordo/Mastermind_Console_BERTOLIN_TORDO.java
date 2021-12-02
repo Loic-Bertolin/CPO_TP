@@ -14,7 +14,9 @@ public class Mastermind_Console_BERTOLIN_TORDO {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        System.out.println("Bienvenue au Mastermind");
+        Partie une_partie = new Partie();
+        une_partie.debuterPartie();   
     }
     
 }
