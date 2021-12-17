@@ -40,7 +40,7 @@ public class Grille {
     public boolean etreRemplie() {
         for (int lignes = 0; lignes < 12; lignes++) {
             for (int colonnes = 0; colonnes < 4; colonnes++) {
-                if (PionJeu[lignes][colonnes] != null) {
+                if (PionJeu[lignes][colonnes] == null) {
                     return false;
                 }
             }
@@ -59,9 +59,12 @@ public class Grille {
 
     public void afficherGrilleSurConsole() {
         System.out.print("\n" + "|");
-        for (int lignes = 12; lignes >= 0; lignes--) {
+        for (int lignes = 11; lignes >= 0; lignes--) {
             for (int colonnes = 0; colonnes < 4; colonnes++) {
-                if ("Rouge".equals(PionJeu[lignes][colonnes].lireCouleur())) {
+                if(PionJeu[lignes][colonnes]==null){
+                    System.out.print("-|");
+                }
+                else if ("Rouge".equals(PionJeu[lignes][colonnes].lireCouleur())) {
                     System.out.print("R|");
                 } else if ("Jaune".equals(PionJeu[lignes][colonnes].lireCouleur())) {
                     System.out.print("J|");
@@ -75,10 +78,8 @@ public class Grille {
                     System.out.print("M");
                 } else if ("Fushia".equals(PionJeu[lignes][colonnes].lireCouleur())) {
                     System.out.print("F|");
-                } else if ("Noir".equals(PionJeu[lignes][colonnes].lireCouleur())) {
+                } else{ //if ("Noir".equals(PionJeu[lignes][colonnes].lireCouleur())) 
                     System.out.print("N|");
-                } else {
-                    System.out.print("-|");
                 }
             }
             if (lignes > 0) {
@@ -126,9 +127,12 @@ public class Grille {
         int[] result = new int[2];
         result[0] = jetonBienPlace;
         result[1] = jetonBonneCouleur;
-        if (PionReponse[uneligne]==null){
-            return result;
+        for(int i = 0;i<4;i++){
+            if (PionReponse[uneligne][i]==null){
+                return result;
+            }
         }
+
         for (int i = 0; i < 4; i++) {
             if (PionReponse[uneligne][i].lireCouleur() == PionJeu[uneligne][i].lireCouleur()) {
                 jetonBienPlace++;
