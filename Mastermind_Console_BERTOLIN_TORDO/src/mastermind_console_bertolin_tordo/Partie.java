@@ -4,6 +4,8 @@
  */
 package mastermind_console_bertolin_tordo;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -13,6 +15,7 @@ import java.util.Scanner;
 public class Partie {
 
     Grille grilleJeu = new Grille();
+    HashMap sacDeTableaux;
 
     public Partie() {
 
@@ -41,64 +44,80 @@ public class Partie {
             pioche.ajouterPion(pion7);
             Pion pion8 = new Pion("Noir");
             pioche.ajouterPion(pion8);
+
         }
+        sacDeTableaux = new HashMap();
+        sacDeTableaux.put("Rouge", pioche.couleurRouge);
+        sacDeTableaux.put("Jaune", pioche.couleurJaune);
+        sacDeTableaux.put("Vert", pioche.couleurVert);
+        sacDeTableaux.put("Bleu", pioche.couleurBleu);
+        sacDeTableaux.put("Orange", pioche.couleurOrange);
+        sacDeTableaux.put("Marron", pioche.couleurMarron);
+        sacDeTableaux.put("Fushia", pioche.couleurFushia);
+        sacDeTableaux.put("Noir", pioche.couleurNoir);
     }
 
     public void debuterPartie() {
         initialiserPartie();
 
         while ((grilleJeu.etreGagnantPourJoueur() == false) && (grilleJeu.etreRemplie() == false)) {
-            grilleJeu.afficherGrilleSurConsole();
-            System.out.println("1) Poser pion");
-            System.out.println("2) Récupérer pion");
-            Scanner sc = new Scanner(System.in);
-            int action = sc.nextInt();
-            while (action < 1 && action > 2) {
-                System.out.println("Erreur, il faut une des 2 actions");
-                action = sc.nextInt();
-            }
+            //while (grilleJeu.ligneRemplie() == true) {
+                grilleJeu.afficherGrilleSurConsole();
+                System.out.println("1) Poser pion");
+                System.out.println("2) Récupérer pion");
+                Scanner sc = new Scanner(System.in);
+                int action = sc.nextInt();
+                while (action < 1 && action > 2) {
+                    System.out.println("Erreur, il faut une des 2 actions");
+                    action = sc.nextInt();
+                }
 
-            switch (action) {
-                case 1 -> {//Poser pion
-                    System.out.println(" Posez vos 4 jetons");
-                    System.out.println("1) Poser dans colonne 1");
-                    System.out.println("2) Poser dans colonne 2");
-                    System.out.println("3) Poser dans colonne 3");
-                    System.out.println("4) Poser dans colonne 4");
-                    Scanner sc = new Scanner(System.in);
-                    int colonne = sc.nextInt();
-                    while (colonne < 1 && colonne > 4) {
-                        System.out.println("Erreur, il faut une des 4 actions");
-                        colonne = sc.nextInt();
+                switch (action) {
+                    case 1 -> {//Poser pion
+                        System.out.println(" Posez vos 4 jetons");
+                        System.out.println("1) Poser dans colonne 1");
+                        System.out.println("2) Poser dans colonne 2");
+                        System.out.println("3) Poser dans colonne 3");
+                        System.out.println("4) Poser dans colonne 4");
+                        int colonne = sc.nextInt()-1;
+                        while (colonne < 1 && colonne > 4) {
+                            System.out.println("Erreur, il faut une des 4 actions");
+                            colonne = sc.nextInt()-1;
+                        }
+                        
+                        System.out.println("Quelle couleur jouer parmis 'Rouge,Jaune,Vert,Bleu,Orange,Marron,Fushia,Noir' ? ");
+                        String couleur = sc.nextLine();
+                        while (!("Rouge".equals(couleur) || "Jaune".equals(couleur) || "Vert".equals(couleur) || "Bleu".equals(couleur) || "Orange".equals(couleur) || "Marron".equals(couleur) || "Fushia".equals(couleur) || "Noir".equals(couleur))) {
+                            System.out.println("Erreur, choisir parmis 'Rouge,Jaune,Vert,Bleu,Orange,Marron,Fushia,Noir' ? ");
+                            couleur = sc.nextLine();
+                        }
+                        ArrayList<Pion> a = (ArrayList) sacDeTableaux.get(couleur);
+                        grilleJeu.ajouterPionDansLigne(a.get(0), colonne);
+                        a.remove(0);
                     }
-                    System.out.println("Quelle couleur jouer parmis 'Rouge,Jaune,Vert,Bleu,Orange,Marron,Fushia,Noir' ? ");
-                    String couleur = sc.nextLine();
-                    while (!("Rouge".equals(couleur) || "Jaune".equals(couleur) || "Vert".equals(couleur) || "Bleu".equals(couleur) || "Orange".equals(couleur) || "Marron".equals(couleur) || "Fushia".equals(couleur) || "Noir".equals(couleur))) {
-                        System.out.println("Erreur, choisir parmis 'Rouge,Jaune,Vert,Bleu,Orange,Marron,Fushia,Noir' ? ");
-                        couleur = sc.nextLine();
+
+                    case 2 -> {//Retirer pion
+                        //chercher ligne
+                        /*int derniereLigneRemplie = 0;
+                        while (grilleJeu.PionJeu[derniereLigneRemplie][colonne] != null) {
+                            derniereLigneRemplie++;
+                        }*/
                     }
-                    //chercher ligne
-                    
-                    grilleJeu[derniereLigneRemplie][colonne].
                 }
 
-                case 2 -> {//Retirer pion
-                }
-            }
-            if (grilleJeu.etreGagnantePourJoueur(joueurCourant) == false) {
-                if (ListeJoueurs[0] == joueurCourant) {
-                    joueurCourant = ListeJoueurs[1];
-                } else {
-                    joueurCourant = ListeJoueurs[0];
-                }
-
-                System.out.println("Tour suivant :" + joueurCourant.Nom);
-                System.out.println("Nombre de jeton de " + joueurCourant.Nom + " est : " + joueurCourant.nombreJetonRestants);
-                System.out.println("Nombre de désintégrateur de " + joueurCourant.Nom + " est : " + joueurCourant.nombreDesintegrateurs);
             }
 
         }
-        System.out.println(joueurCourant.Nom + " a gagné, le jeu est terminé.");
-    }
+   // }
 
 }
+
+
+/*
+on peut poser sur la colonne suivante alors que la ligne n'est pas pleine (ça s'entasse) --> vérifer avant que la ligne est remplie
+Le message d'erreur s'affiche dès la première fois (on rentre direct dans le while alors que pas besoin)
+faire case 2
+générer la grille de réponse (dans initialiser partie)
+vérifier que le joueur a gagné en comparant avec la grille de réponse --> + affciher les indices (point bien placé ou bonne couleur)
+
+*/

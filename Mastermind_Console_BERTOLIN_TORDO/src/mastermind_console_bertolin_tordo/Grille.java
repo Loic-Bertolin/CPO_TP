@@ -27,10 +27,10 @@ public class Grille {
         }
     }
 
-    public boolean ajouterPionDansLigne(Pion unPion, int uneLigne) {
+    public boolean ajouterPionDansLigne(Pion unPion, int uneColonne) {
         for (int i = 0; i < 12; i++) {
-            if (PionJeu[uneLigne][i] == null) {
-                PionJeu[uneLigne][i] = unPion;
+            if (PionJeu[i][uneColonne] == null) {
+                PionJeu[i][uneColonne] = unPion;
                 return true;
             }
         }
