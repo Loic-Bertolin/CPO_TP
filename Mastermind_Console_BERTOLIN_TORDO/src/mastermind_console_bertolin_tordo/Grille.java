@@ -75,7 +75,7 @@ public class Grille {
                 } else if ("Orange".equals(PionJeu[lignes][colonnes].lireCouleur())) {
                     System.out.print("O|");
                 } else if ("Marron".equals(PionJeu[lignes][colonnes].lireCouleur())) {
-                    System.out.print("M");
+                    System.out.print("M|");
                 } else if ("Fushia".equals(PionJeu[lignes][colonnes].lireCouleur())) {
                     System.out.print("F|");
                 } else { //if ("Noir".equals(PionJeu[lignes][colonnes].lireCouleur())) 
