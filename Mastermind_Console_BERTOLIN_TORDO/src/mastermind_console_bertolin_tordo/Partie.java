@@ -115,7 +115,7 @@ public class Partie {
                     String couleur = sc.nextLine();
 
                     while (!("Rouge".equals(couleur) || "Jaune".equals(couleur) || "Vert".equals(couleur) || "Bleu".equals(couleur) || "Orange".equals(couleur) || "Marron".equals(couleur) || "Fushia".equals(couleur) || "Noir".equals(couleur))) {
-                        System.out.println("Erreur, choisir parmis 'Rouge,Jaune,Vert,Bleu,Orange,Marron,Fushia,Noir' ? ");
+                        //System.out.println("Quelle couleur jouer parmis 'Rouge,Jaune,Vert,Bleu,Orange,Marron,Fushia,Noir' ? ");
                         couleur = sc.nextLine();
                     }
                     ArrayList<Pion> a = (ArrayList) sacDeTableaux.get(couleur);
