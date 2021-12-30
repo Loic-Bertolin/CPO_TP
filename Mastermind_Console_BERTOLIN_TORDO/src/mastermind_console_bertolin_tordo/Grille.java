@@ -5,6 +5,7 @@
 package mastermind_console_bertolin_tordo;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -61,10 +62,9 @@ public class Grille {
         System.out.print("\n" + "|");
         for (int lignes = 11; lignes >= 0; lignes--) {
             for (int colonnes = 0; colonnes < 4; colonnes++) {
-                if(PionJeu[lignes][colonnes]==null){
+                if (PionJeu[lignes][colonnes] == null) {
                     System.out.print("-|");
-                }
-                else if ("Rouge".equals(PionJeu[lignes][colonnes].lireCouleur())) {
+                } else if ("Rouge".equals(PionJeu[lignes][colonnes].lireCouleur())) {
                     System.out.print("R|");
                 } else if ("Jaune".equals(PionJeu[lignes][colonnes].lireCouleur())) {
                     System.out.print("J|");
@@ -78,7 +78,7 @@ public class Grille {
                     System.out.print("M");
                 } else if ("Fushia".equals(PionJeu[lignes][colonnes].lireCouleur())) {
                     System.out.print("F|");
-                } else{ //if ("Noir".equals(PionJeu[lignes][colonnes].lireCouleur())) 
+                } else { //if ("Noir".equals(PionJeu[lignes][colonnes].lireCouleur())) 
                     System.out.print("N|");
                 }
             }
@@ -93,13 +93,36 @@ public class Grille {
     public Pion recupererPion(int unecolonne) {
         return PionJeu[derniereLigneRemplie][unecolonne];
     }
+    
+    public String couleur_aleatoire(){
+        String [] tab_couleur = new String[8];
+        
+        tab_couleur[0] = "Rouge";
+        tab_couleur[1] = "Jaune";
+        tab_couleur[2] = "Vert";
+        tab_couleur[3] = "Bleu";
+        tab_couleur[4] = "Orange";
+        tab_couleur[5] = "Marron";
+        tab_couleur[6] = "Fushia";
+        tab_couleur[7] = "Noir";
+        Random pion = new Random();
+        int alea = pion.nextInt(8);
+        if(alea==1) return "Rouge";
+        if(alea==2) return "Jaune";
+        if(alea==3) return "Vert";
+        if(alea==4) return "Bleu";
+        if(alea==5) return "Orange";
+        if(alea==6) return "Marron";
+        if(alea==7) return "Fushia";
+        else return "Noir";
+    }
 
     public String lireCouleurPion(int uneligne, int unecolonne) {
         return PionJeu[uneligne][unecolonne].lireCouleur();
     }
 
     public boolean etreGagnantPourJoueur() {
-        return verifierLigne(derniereLigneRemplie)[0]==4;
+        return verifierLigne(derniereLigneRemplie)[0] == 4;
     }
 
     public boolean ligneRemplie() {
@@ -118,6 +141,9 @@ public class Grille {
         }
         return false;
     }
+    
+
+    
 
     public int[] verifierLigne(int uneligne) {
         ArrayList<Pion> verifJeu = new ArrayList<>();
@@ -127,8 +153,8 @@ public class Grille {
         int[] result = new int[2];
         result[0] = jetonBienPlace;
         result[1] = jetonBonneCouleur;
-        for(int i = 0;i<4;i++){
-            if (PionReponse[uneligne][i]==null){
+        for (int i = 0; i < 4; i++) {
+            if (PionReponse[uneligne][i] == null) {
                 return result;
             }
         }

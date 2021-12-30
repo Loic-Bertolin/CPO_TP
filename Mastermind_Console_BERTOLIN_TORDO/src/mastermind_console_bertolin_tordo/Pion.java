@@ -4,19 +4,20 @@
  */
 package mastermind_console_bertolin_tordo;
 
+
 /**
  *
  * @author pierre
  */
 public class Pion {
+
     String Couleur;
-    
-    public Pion(String uneCouleur){
+
+    public Pion(String uneCouleur) {
         Couleur = uneCouleur;
     }
-    
-    public String lireCouleur(){
+
+    public String lireCouleur() {
         return Couleur;
     }
-    
 }

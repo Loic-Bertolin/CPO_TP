@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @author pierre
  */
 public class Pioche {
+
     ArrayList<Pion> couleurRouge = new ArrayList<>();
     ArrayList<Pion> couleurJaune = new ArrayList<>();
     ArrayList<Pion> couleurVert = new ArrayList<>();
@@ -19,50 +20,75 @@ public class Pioche {
     ArrayList<Pion> couleurMarron = new ArrayList<>();
     ArrayList<Pion> couleurFushia = new ArrayList<>();
     ArrayList<Pion> couleurNoir = new ArrayList<>();
-    
-    public void ajouterPion(Pion unPion){
-        
-        if("Rouge".equals(unPion.lireCouleur())){
+    ArrayList<Pion> reponse = new ArrayList<>();
+
+    public void ajouterPion(Pion unPion) {
+
+        if ("Rouge".equals(unPion.lireCouleur())) {
             couleurRouge.add(unPion);
-        }
-        else if("Jaune".equals(unPion.lireCouleur())){
+        } else if ("Jaune".equals(unPion.lireCouleur())) {
             couleurJaune.add(unPion);
-        }
-        else if("Vert".equals(unPion.lireCouleur())){
+        } else if ("Vert".equals(unPion.lireCouleur())) {
             couleurVert.add(unPion);
-        }
-        else if("Bleu".equals(unPion.lireCouleur())){
+        } else if ("Bleu".equals(unPion.lireCouleur())) {
             couleurBleu.add(unPion);
-        }
-        else if("Orange".equals(unPion.lireCouleur())){
+        } else if ("Orange".equals(unPion.lireCouleur())) {
             couleurOrange.add(unPion);
-        }
-        else if("Marron".equals(unPion.lireCouleur())){
+        } else if ("Marron".equals(unPion.lireCouleur())) {
             couleurMarron.add(unPion);
-        }
-        else if("Fushia".equals(unPion.lireCouleur())){
+        } else if ("Fushia".equals(unPion.lireCouleur())) {
             couleurFushia.add(unPion);
-        }
-        else if("Noir".equals(unPion.lireCouleur())){
+        } else if ("Noir".equals(unPion.lireCouleur())) {
             couleurNoir.add(unPion);
         }
     }
-    
-    public Pion choisirPion(String uneCouleur){
-        if(null==uneCouleur){
-            return null;
+
+    public void ajouterPion_reponse(Pion unPion) {
+
+        if ("Rouge".equals(unPion.lireCouleur())) {
+            reponse.add(unPion);
+        } else if ("Jaune".equals(unPion.lireCouleur())) {
+            reponse.add(unPion);
+        } else if ("Vert".equals(unPion.lireCouleur())) {
+            reponse.add(unPion);
+        } else if ("Bleu".equals(unPion.lireCouleur())) {
+            reponse.add(unPion);
+        } else if ("Orange".equals(unPion.lireCouleur())) {
+            reponse.add(unPion);
+        } else if ("Marron".equals(unPion.lireCouleur())) {
+            reponse.add(unPion);
+        } else if ("Fushia".equals(unPion.lireCouleur())) {
+            reponse.add(unPion);
+        } else if ("Noir".equals(unPion.lireCouleur())) {
+            reponse.add(unPion);
         }
-        else return switch (uneCouleur) {
-            case "Rouge" -> couleurRouge.remove(0);
-            case "Jaune" -> couleurJaune.remove(0);
-            case "Vert" -> couleurVert.remove(0);
-            case "Bleu" -> couleurBleu.remove(0);
-            case "Orange" -> couleurOrange.remove(0);
-            case "Marron" -> couleurMarron.remove(0);
-            case "Fushia" -> couleurFushia.remove(0);
-            case "Noir" -> couleurNoir.remove(0);
-            default -> null;
-        };
     }
-    
+
+    public Pion choisirPion(String uneCouleur) {
+        if (null == uneCouleur) {
+            return null;
+        } else {
+            return switch (uneCouleur) {
+                case "Rouge" ->
+                    couleurRouge.remove(0);
+                case "Jaune" ->
+                    couleurJaune.remove(0);
+                case "Vert" ->
+                    couleurVert.remove(0);
+                case "Bleu" ->
+                    couleurBleu.remove(0);
+                case "Orange" ->
+                    couleurOrange.remove(0);
+                case "Marron" ->
+                    couleurMarron.remove(0);
+                case "Fushia" ->
+                    couleurFushia.remove(0);
+                case "Noir" ->
+                    couleurNoir.remove(0);
+                default ->
+                    null;
+            };
+        }
+    }
+
 }
