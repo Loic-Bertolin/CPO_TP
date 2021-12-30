@@ -16,6 +16,7 @@ import java.util.Scanner;
 public class Partie {
 
     Grille grilleJeu = new Grille();
+    Pioche pioche = new Pioche();
     HashMap sacDeTableaux;
 
     public Partie() {
@@ -27,7 +28,7 @@ public class Partie {
         Scanner sc = new Scanner(System.in);
         System.out.println("Entrer le nom du joueur :");
         Joueur joueur = new Joueur(sc.nextLine());
-        Pioche pioche = new Pioche();
+        
         for (int i = 0; i < 48; i++) {
             Pion pion1 = new Pion("Rouge");
             pioche.ajouterPion(pion1);
@@ -83,7 +84,8 @@ public class Partie {
 
     public void debuterPartie() {
         initialiserPartie();
-        Pioche pioche = new Pioche();
+        int compteur_bonne_couleur = 0;
+        //Pioche pioche = new Pioche();
 
         while ((grilleJeu.etreGagnantPourJoueur() == false) && (grilleJeu.etreRemplie() == false)) {
             //while (grilleJeu.ligneRemplie() == true) {
@@ -128,21 +130,15 @@ public class Partie {
                     } else {
                         System.out.println("Aucune couleur bien choisi : ");
                     }*/
-                    /*String temp = a.get(0).lireCouleur();
-                    System.out.println(temp);
                     
-                    String temp1 = pioche.reponse.get(0).lireCouleur();
-                    System.out.println(temp1);
-
 
                     for(int i = 0;i<4;i++){
-                       if (1 == 1){
-                           System.out.println("Une couleur bien choisie");
+                       if (pioche.reponse.get(i).lireCouleur() == a.get(0).lireCouleur()){
+                           compteur_bonne_couleur++;
                        }
-                       else{
-                           System.out.println("Aucune couleur bien choisie");
-                       }
-                    }*/
+
+                    }
+                    System.out.println("Une couleur bien choisie : " +compteur_bonne_couleur);
 
                     a.remove(0);
 
