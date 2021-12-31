@@ -28,7 +28,7 @@ public class Partie {
         Scanner sc = new Scanner(System.in);
         System.out.println("Entrer le nom du joueur :");
         Joueur joueur = new Joueur(sc.nextLine());
-        
+
         for (int i = 0; i < 48; i++) {
             Pion pion1 = new Pion("Rouge");
             pioche.ajouterPion(pion1);
@@ -85,79 +85,84 @@ public class Partie {
     public void debuterPartie() {
         initialiserPartie();
         int compteur_bonne_couleur = 0;
+        int compteur_bien_place = 0;
         //Pioche pioche = new Pioche();
 
         while ((grilleJeu.etreGagnantPourJoueur() == false) && (grilleJeu.etreRemplie() == false)) {
             //while (grilleJeu.ligneRemplie() == true) {
             grilleJeu.afficherGrilleSurConsole();
-            System.out.println("1) Poser pion");
+            /*System.out.println("1) Poser pion");
             System.out.println("2) Récupérer pion");
             Scanner sc = new Scanner(System.in);
             int action = sc.nextInt();
             while (action < 1 && action > 2) {
                 System.out.println("Erreur, il faut une des 2 actions");
                 action = sc.nextInt();
+            }*/
+
+            //switch (action) {
+            //case 1 -> {//Poser pion
+            Scanner sc = new Scanner(System.in);
+            System.out.println(" Posez vos 4 jetons");
+            System.out.println("1) Poser dans colonne 1");
+            System.out.println("2) Poser dans colonne 2");
+            System.out.println("3) Poser dans colonne 3");
+            System.out.println("4) Poser dans colonne 4");
+            int colonne = sc.nextInt() - 1;
+            while (colonne < 1 && colonne > 4) {
+                System.out.println("Erreur");
+                colonne = sc.nextInt() - 1;
             }
+            System.out.println("Quelle couleur jouer parmis 'Rouge,Jaune,Vert,Bleu,Orange,Marron,Fushia,Noir' ? ");
+            String couleur = sc.nextLine();
 
-            switch (action) {
-                case 1 -> {//Poser pion
-                    System.out.println(" Posez vos 4 jetons");
-                    System.out.println("1) Poser dans colonne 1");
-                    System.out.println("2) Poser dans colonne 2");
-                    System.out.println("3) Poser dans colonne 3");
-                    System.out.println("4) Poser dans colonne 4");
-                    int colonne = sc.nextInt() - 1;
-                    while (colonne < 1 && colonne > 4) {
-                        System.out.println("Erreur");
-                        colonne = sc.nextInt() - 1;
-                    }
-                    System.out.println("Quelle couleur jouer parmis 'Rouge,Jaune,Vert,Bleu,Orange,Marron,Fushia,Noir' ? ");
-                    String couleur = sc.nextLine();
+            while (!("Rouge".equals(couleur) || "Jaune".equals(couleur) || "Vert".equals(couleur) || "Bleu".equals(couleur) || "Orange".equals(couleur) || "Marron".equals(couleur) || "Fushia".equals(couleur) || "Noir".equals(couleur))) {
+                //System.out.println("Quelle couleur jouer parmis 'Rouge,Jaune,Vert,Bleu,Orange,Marron,Fushia,Noir' ? ");
+                couleur = sc.nextLine();
+            }
+            ArrayList<Pion> a = (ArrayList) sacDeTableaux.get(couleur);
+            //System.out.println(a.get(0).lireCouleur());
+            grilleJeu.ajouterPionDansLigne(a.get(0), colonne);
 
-                    while (!("Rouge".equals(couleur) || "Jaune".equals(couleur) || "Vert".equals(couleur) || "Bleu".equals(couleur) || "Orange".equals(couleur) || "Marron".equals(couleur) || "Fushia".equals(couleur) || "Noir".equals(couleur))) {
-                        //System.out.println("Quelle couleur jouer parmis 'Rouge,Jaune,Vert,Bleu,Orange,Marron,Fushia,Noir' ? ");
-                        couleur = sc.nextLine();
-                    }
-                    ArrayList<Pion> a = (ArrayList) sacDeTableaux.get(couleur);
-                    //System.out.println(a.get(0).lireCouleur());
-                    grilleJeu.ajouterPionDansLigne(a.get(0), colonne);
-
-                   
-                    /*boolean temp;
+            /*boolean temp;
                     temp = pioche1.reponse.contains(a.get(0));
                     if (temp == true) {
                         System.out.println("Nombre de couleur bien choisi : ");
                     } else {
                         System.out.println("Aucune couleur bien choisi : ");
                     }*/
-                    
-
-                    for(int i = 0;i<4;i++){
-                       if (pioche.reponse.get(i).lireCouleur() == a.get(0).lireCouleur()){
-                           compteur_bonne_couleur++;
-                       }
-
+            boolean verif = false;
+            if (pioche.reponse.get(colonne).lireCouleur() == a.get(0).lireCouleur()) {
+                compteur_bien_place++;
+                verif = true;
+            }
+            if (verif == false) {
+                for (int i = 0; i < 4; i++) {
+                    if (pioche.reponse.get(i).lireCouleur() == a.get(0).lireCouleur()) {
+                        compteur_bonne_couleur++;
                     }
-                    System.out.println("Une couleur bien choisie : " +compteur_bonne_couleur);
-
-                    a.remove(0);
-
-                }
-
-                case 2 -> {//Retirer pion
-                    //chercher ligne
-                    /*int derniereLigneRemplie = 0;
-                        while (grilleJeu.PionJeu[derniereLigneRemplie][colonne] != null) {
-                            derniereLigneRemplie++;
-                        }*/
                 }
             }
 
+            System.out.println("Nombre de couleur bien choisie : " + compteur_bonne_couleur);
+            System.out.println("Nombre de pion bien placé : " + compteur_bien_place);
+
+            a.remove(0);
+
         }
 
+        //case 2 -> {//Retirer pion
+        //chercher ligne
+        /*int derniereLigneRemplie = 0;
+                        while (grilleJeu.PionJeu[derniereLigneRemplie][colonne] != null) {
+                            derniereLigneRemplie++;
+                        }*/
+        //}
     }
-    // }
 
+    //}
+    //}
+    // }
 }
 
 
