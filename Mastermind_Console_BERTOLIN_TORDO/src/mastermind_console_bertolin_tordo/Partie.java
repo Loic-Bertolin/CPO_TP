@@ -87,6 +87,10 @@ public class Partie {
         int compteur_bonne_couleur = 0;
         int compteur_bien_place = 0;
         int remplissage = 0;
+        int temp1 = 0;
+        int temp2 = 0;
+        int affichage = 0;
+        int k = 0;
 
         //(grilleJeu.etreGagnantPourJoueur() == false) ||
         while (grilleJeu.etreRemplie() == false) {
@@ -105,6 +109,7 @@ public class Partie {
                 colonne = sc.nextInt() - 1;
             }
             remplissage++;
+            affichage++;
             System.out.println("Quelle couleur jouer parmis 'Rouge,Jaune,Vert,Bleu,Orange,Marron,Fushia,Noir' ? ");
             String couleur = sc.nextLine();
 
@@ -113,41 +118,42 @@ public class Partie {
                 couleur = sc.nextLine();
             }
             ArrayList<Pion> a = (ArrayList) sacDeTableaux.get(couleur);
-            //System.out.println(a.get(0).lireCouleur());
             grilleJeu.ajouterPionDansLigne(a.get(0), colonne);
 
-            /*boolean temp;
-                    temp = pioche1.reponse.contains(a.get(0));
-                    if (temp == true) {
-                        System.out.println("Nombre de couleur bien choisi : ");
-                    } else {
-                        System.out.println("Aucune couleur bien choisi : ");
-                    }*/
-            boolean verif = false;
             if (pioche.reponse.get(colonne).lireCouleur() == a.get(0).lireCouleur()) {
                 compteur_bien_place++;
-                verif = true;
+                k++;
             }
-            if (verif == false) {
-                for (int i = 0; i < 4; i++) {
-                    if (pioche.reponse.get(i).lireCouleur() == a.get(0).lireCouleur()) {
-                        compteur_bonne_couleur++;
-                    }
+            for (int i = 0; i < 4; i++) {
+                if (pioche.reponse.get(i).lireCouleur() == a.get(0).lireCouleur()) {
+                    compteur_bonne_couleur++;
+                    break;
                 }
             }
 
-            System.out.println("Nombre de couleur bien choisie : " + compteur_bonne_couleur);
-            System.out.println("Nombre de pion bien placé : " + compteur_bien_place);
+            if (affichage > 4) {
+                System.out.println("TOUR PRÉCÉDENT");
+                System.out.println("Nombre de couleur bien choisie : " + temp2);
+                System.out.println("Nombre de pion bien placé : " + temp1 + "\n");
+            }
 
             a.remove(0);
             if (compteur_bien_place == 4) {
+                grilleJeu.afficherGrilleSurConsole();
                 System.out.println("Vous avez gagné !");
                 break;
             }
+
             if (remplissage == 4) {
+                temp1 = compteur_bien_place;
+                temp2 = compteur_bonne_couleur - k;
+                System.out.println("TOUR ACTUEL");
+                System.out.println("Nombre de couleur bien choisie : " + (compteur_bonne_couleur - k));
+                System.out.println("Nombre de pion bien placé : " + compteur_bien_place + "\n");
                 remplissage = 0;
                 compteur_bien_place = 0;
                 compteur_bonne_couleur = 0;
+                k = 0;
             }
         }
 
@@ -156,6 +162,6 @@ public class Partie {
 
 
 /*
+FONCTIONNALITÉES NON TERMINÉE : 
 on peut poser sur la colonne suivante alors que la ligne n'est pas pleine (ça s'entasse) --> vérifer avant que la ligne est remplie
-vérifier que le joueur a gagné en comparant avec la grille de réponse
  */
