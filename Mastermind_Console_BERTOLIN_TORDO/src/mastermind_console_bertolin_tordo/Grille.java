@@ -63,23 +63,29 @@ public class Grille {
         for (int lignes = 11; lignes >= 0; lignes--) {
             for (int colonnes = 0; colonnes < 4; colonnes++) {
                 if (PionJeu[lignes][colonnes] == null) {
-                    System.out.print("-|");
+                    System.out.print(" - |");
                 } else if ("Rouge".equals(PionJeu[lignes][colonnes].lireCouleur())) {
-                    System.out.print("R|");
+                    System.out.print("\033[31m X ");
+                    System.out.print("\033[0m|");
                 } else if ("Jaune".equals(PionJeu[lignes][colonnes].lireCouleur())) {
-                    System.out.print("J|");
+                    System.out.print("\033[33m X ");
+                    System.out.print("\033[0m|");
                 } else if ("Vert".equals(PionJeu[lignes][colonnes].lireCouleur())) {
-                    System.out.print("V|");
+                    System.out.print("\033[32m X ");
+                    System.out.print("\033[0m|");
                 } else if ("Bleu".equals(PionJeu[lignes][colonnes].lireCouleur())) {
-                    System.out.print("B|");
+                    System.out.print("\033[34m X ");
+                    System.out.print("\033[0m|");
                 } else if ("Orange".equals(PionJeu[lignes][colonnes].lireCouleur())) {
-                    System.out.print("O|");
+                    System.out.print(" O |");
                 } else if ("Marron".equals(PionJeu[lignes][colonnes].lireCouleur())) {
-                    System.out.print("M|");
+                    System.out.print(" M |");
                 } else if ("Fushia".equals(PionJeu[lignes][colonnes].lireCouleur())) {
-                    System.out.print("F|");
+                    System.out.print("\033[35m X ");
+                    System.out.print("\033[0m|");
                 } else { //if ("Noir".equals(PionJeu[lignes][colonnes].lireCouleur())) 
-                    System.out.print("N|");
+                    System.out.print("\033[0m X ");
+                    System.out.print("\033[0m|");
                 }
             }
             if (lignes > 0) {
@@ -179,5 +185,8 @@ public class Grille {
         }
         return result;
     }
+      
 
 }
+
+

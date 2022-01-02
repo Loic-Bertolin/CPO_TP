@@ -88,22 +88,12 @@ public class Partie {
         int compteur_bien_place = 0;
         //Pioche pioche = new Pioche();
 
-        while ((grilleJeu.etreGagnantPourJoueur() == false) && (grilleJeu.etreRemplie() == false)) {
+        while ((grilleJeu.etreGagnantPourJoueur() == false) || (grilleJeu.etreRemplie() == false)||compteur_bien_place<4 ) {
             //while (grilleJeu.ligneRemplie() == true) {
             grilleJeu.afficherGrilleSurConsole();
-            /*System.out.println("1) Poser pion");
-            System.out.println("2) Récupérer pion");
-            Scanner sc = new Scanner(System.in);
-            int action = sc.nextInt();
-            while (action < 1 && action > 2) {
-                System.out.println("Erreur, il faut une des 2 actions");
-                action = sc.nextInt();
-            }*/
 
-            //switch (action) {
-            //case 1 -> {//Poser pion
             Scanner sc = new Scanner(System.in);
-            System.out.println(" Posez vos 4 jetons");
+            System.out.println(" Posez vos jetons");
             System.out.println("1) Poser dans colonne 1");
             System.out.println("2) Poser dans colonne 2");
             System.out.println("3) Poser dans colonne 3");
@@ -151,25 +141,11 @@ public class Partie {
 
         }
 
-        //case 2 -> {//Retirer pion
-        //chercher ligne
-        /*int derniereLigneRemplie = 0;
-                        while (grilleJeu.PionJeu[derniereLigneRemplie][colonne] != null) {
-                            derniereLigneRemplie++;
-                        }*/
-        //}
     }
-
-    //}
-    //}
-    // }
 }
 
 
 /*
 on peut poser sur la colonne suivante alors que la ligne n'est pas pleine (ça s'entasse) --> vérifer avant que la ligne est remplie
-Le message d'erreur s'affiche dès la première fois (on rentre direct dans le while alors que pas besoin)
-faire case 2
-vérifier que le joueur a gagné en comparant avec la grille de réponse --> + affciher les indices (point bien placé ou bonne couleur)
-
+vérifier que le joueur a gagné en comparant avec la grille de réponse
  */

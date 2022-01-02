@@ -15,6 +15,7 @@ public class Mastermind_Console_BERTOLIN_TORDO {
      */
     public static void main(String[] args) {
         System.out.println("Bienvenue au Mastermind");
+        //System.out.println("\033[36mx");
         Partie une_partie = new Partie();
         une_partie.debuterPartie();   
     }
