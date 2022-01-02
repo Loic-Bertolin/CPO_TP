@@ -86,9 +86,10 @@ public class Partie {
         initialiserPartie();
         int compteur_bonne_couleur = 0;
         int compteur_bien_place = 0;
-        //Pioche pioche = new Pioche();
+        int remplissage = 0;
 
-        while ((grilleJeu.etreGagnantPourJoueur() == false) || (grilleJeu.etreRemplie() == false)||compteur_bien_place<4 ) {
+        //(grilleJeu.etreGagnantPourJoueur() == false) ||
+        while (grilleJeu.etreRemplie() == false) {
             //while (grilleJeu.ligneRemplie() == true) {
             grilleJeu.afficherGrilleSurConsole();
 
@@ -103,6 +104,7 @@ public class Partie {
                 System.out.println("Erreur");
                 colonne = sc.nextInt() - 1;
             }
+            remplissage++;
             System.out.println("Quelle couleur jouer parmis 'Rouge,Jaune,Vert,Bleu,Orange,Marron,Fushia,Noir' ? ");
             String couleur = sc.nextLine();
 
@@ -138,7 +140,15 @@ public class Partie {
             System.out.println("Nombre de pion bien placé : " + compteur_bien_place);
 
             a.remove(0);
-
+            if (compteur_bien_place == 4) {
+                System.out.println("Vous avez gagné !");
+                break;
+            }
+            if (remplissage == 4) {
+                remplissage = 0;
+                compteur_bien_place = 0;
+                compteur_bonne_couleur = 0;
+            }
         }
 
     }

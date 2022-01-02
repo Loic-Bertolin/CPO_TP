@@ -99,10 +99,10 @@ public class Grille {
     public Pion recupererPion(int unecolonne) {
         return PionJeu[derniereLigneRemplie][unecolonne];
     }
-    
-    public String couleur_aleatoire(){
-        String [] tab_couleur = new String[8];
-        
+
+    public String couleur_aleatoire() {
+        String[] tab_couleur = new String[8];
+
         tab_couleur[0] = "Rouge";
         tab_couleur[1] = "Jaune";
         tab_couleur[2] = "Vert";
@@ -113,14 +113,29 @@ public class Grille {
         tab_couleur[7] = "Noir";
         Random pion = new Random();
         int alea = pion.nextInt(8);
-        if(alea==1) return "Rouge";
-        if(alea==2) return "Jaune";
-        if(alea==3) return "Vert";
-        if(alea==4) return "Bleu";
-        if(alea==5) return "Orange";
-        if(alea==6) return "Marron";
-        if(alea==7) return "Fushia";
-        else return "Noir";
+        if (alea == 1) {
+            return "Rouge";
+        }
+        if (alea == 2) {
+            return "Jaune";
+        }
+        if (alea == 3) {
+            return "Vert";
+        }
+        if (alea == 4) {
+            return "Bleu";
+        }
+        if (alea == 5) {
+            return "Orange";
+        }
+        if (alea == 6) {
+            return "Marron";
+        }
+        if (alea == 7) {
+            return "Fushia";
+        } else {
+            return "Noir";
+        }
     }
 
     public String lireCouleurPion(int uneligne, int unecolonne) {
@@ -147,9 +162,6 @@ public class Grille {
         }
         return false;
     }
-    
-
-    
 
     public int[] verifierLigne(int uneligne) {
         ArrayList<Pion> verifJeu = new ArrayList<>();
@@ -185,8 +197,19 @@ public class Grille {
         }
         return result;
     }
-      
+
+    public boolean lignePleine(int ligne) {
+        int compteur = 0;
+        for (int colonnes = 0; colonnes < 4; colonnes++) {
+            if (PionJeu[ligne][colonnes] != null) {
+                compteur++;
+            }
+            if (compteur == 4) {
+                derniereLigneRemplie++;
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
-
-
