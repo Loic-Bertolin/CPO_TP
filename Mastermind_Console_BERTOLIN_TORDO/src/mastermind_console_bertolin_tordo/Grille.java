@@ -65,26 +65,28 @@ public class Grille {
                 if (PionJeu[lignes][colonnes] == null) {
                     System.out.print(" - |");
                 } else if ("Rouge".equals(PionJeu[lignes][colonnes].lireCouleur())) {
-                    System.out.print("\033[31m X ");
+                    System.out.print("\033[41m   ");
                     System.out.print("\033[0m|");
                 } else if ("Jaune".equals(PionJeu[lignes][colonnes].lireCouleur())) {
-                    System.out.print("\033[33m X ");
+                    System.out.print("\033[43m   ");
                     System.out.print("\033[0m|");
                 } else if ("Vert".equals(PionJeu[lignes][colonnes].lireCouleur())) {
-                    System.out.print("\033[32m X ");
+                    System.out.print("\033[42m   ");
                     System.out.print("\033[0m|");
                 } else if ("Bleu".equals(PionJeu[lignes][colonnes].lireCouleur())) {
-                    System.out.print("\033[34m X ");
+                    System.out.print("\033[44m   ");
                     System.out.print("\033[0m|");
-                } else if ("Orange".equals(PionJeu[lignes][colonnes].lireCouleur())) {
-                    System.out.print(" O |");
-                } else if ("Marron".equals(PionJeu[lignes][colonnes].lireCouleur())) {
-                    System.out.print(" M |");
+                } else if ("Gris".equals(PionJeu[lignes][colonnes].lireCouleur())) {
+                    System.out.print("\033[47m   ");
+                    System.out.print("\033[0m|");
+                } else if ("Turquoise".equals(PionJeu[lignes][colonnes].lireCouleur())) {
+                    System.out.print("\033[46m   ");
+                    System.out.print("\033[0m|");
                 } else if ("Fushia".equals(PionJeu[lignes][colonnes].lireCouleur())) {
-                    System.out.print("\033[35m X ");
+                    System.out.print("\033[45m   ");
                     System.out.print("\033[0m|");
                 } else { //if ("Noir".equals(PionJeu[lignes][colonnes].lireCouleur())) 
-                    System.out.print("\033[0m X ");
+                    System.out.print("\033[40m   ");
                     System.out.print("\033[0m|");
                 }
             }
@@ -107,8 +109,8 @@ public class Grille {
         tab_couleur[1] = "Jaune";
         tab_couleur[2] = "Vert";
         tab_couleur[3] = "Bleu";
-        tab_couleur[4] = "Orange";
-        tab_couleur[5] = "Marron";
+        tab_couleur[4] = "Gris";
+        tab_couleur[5] = "Turquoise";
         tab_couleur[6] = "Fushia";
         tab_couleur[7] = "Noir";
         Random pion = new Random();
@@ -126,10 +128,10 @@ public class Grille {
             return "Bleu";
         }
         if (alea == 5) {
-            return "Orange";
+            return "Gris";
         }
         if (alea == 6) {
-            return "Marron";
+            return "Turquoise";
         }
         if (alea == 7) {
             return "Fushia";
@@ -156,12 +158,14 @@ public class Grille {
                 }
                 if (compteur == 4) {
                     derniereLigneRemplie++;
+                    compteur=0;
                     return true;
                 }
             }
         }
         return false;
     }
+
 
     public int[] verifierLigne(int uneligne) {
         ArrayList<Pion> verifJeu = new ArrayList<>();
@@ -196,20 +200,6 @@ public class Grille {
             }
         }
         return result;
-    }
-
-    public boolean lignePleine(int ligne) {
-        int compteur = 0;
-        for (int colonnes = 0; colonnes < 4; colonnes++) {
-            if (PionJeu[ligne][colonnes] != null) {
-                compteur++;
-            }
-            if (compteur == 4) {
-                derniereLigneRemplie++;
-                return true;
-            }
-        }
-        return false;
     }
 
 }

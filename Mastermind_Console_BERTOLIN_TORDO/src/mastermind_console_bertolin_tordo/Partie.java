@@ -28,7 +28,7 @@ public class Partie {
         Scanner sc = new Scanner(System.in);
         System.out.println("Entrer le nom du joueur :");
         Joueur joueur = new Joueur(sc.nextLine());
-
+        // création du nombre de pion pour la pioche du joueur
         for (int i = 0; i < 48; i++) {
             Pion pion1 = new Pion("Rouge");
             pioche.ajouterPion(pion1);
@@ -38,9 +38,9 @@ public class Partie {
             pioche.ajouterPion(pion3);
             Pion pion4 = new Pion("Bleu");
             pioche.ajouterPion(pion4);
-            Pion pion5 = new Pion("Orange");
+            Pion pion5 = new Pion("Gris");
             pioche.ajouterPion(pion5);
-            Pion pion6 = new Pion("Marron");
+            Pion pion6 = new Pion("Turquoise");
             pioche.ajouterPion(pion6);
             Pion pion7 = new Pion("Fushia");
             pioche.ajouterPion(pion7);
@@ -54,11 +54,12 @@ public class Partie {
         sacDeTableaux.put("Jaune", pioche.couleurJaune);
         sacDeTableaux.put("Vert", pioche.couleurVert);
         sacDeTableaux.put("Bleu", pioche.couleurBleu);
-        sacDeTableaux.put("Orange", pioche.couleurOrange);
-        sacDeTableaux.put("Marron", pioche.couleurMarron);
+        sacDeTableaux.put("Gris", pioche.couleurGris);
+        sacDeTableaux.put("Turquoise", pioche.couleurTurquoise);
         sacDeTableaux.put("Fushia", pioche.couleurFushia);
         sacDeTableaux.put("Noir", pioche.couleurNoir);
-
+        
+        // On génère les 4 pions aléatoirement que l'on va devoir deviner
         String random1 = grilleJeu.couleur_aleatoire();
         Pion pion1 = new Pion(random1);
         pioche.ajouterPion_reponse(pion1);
@@ -84,13 +85,13 @@ public class Partie {
 
     public void debuterPartie() {
         initialiserPartie();
-        int compteur_bonne_couleur = 0;
-        int compteur_bien_place = 0;
-        int remplissage = 0;
-        int temp1 = 0;
-        int temp2 = 0;
-        int affichage = 0;
-        int k = 0;
+        int compteur_bonne_couleur = 0; // compteur qui va stocker les bonnes couleurs
+        int compteur_bien_place = 0; // compteur qui va stocker les couleurs bien placées
+        int remplissage = 0;// s'incrémente jusqu'à 4 (ligne pleine) pour après indique les score
+        int temp1 = 0; // compteur qui va stocker le nb de couleurs bien placé du tour précédent pour le rappeler au joueur
+        int temp2 = 0; // compteur qui va stocker le nb de couleurs bien choisie du tour précédent pour le rappeler au joueur
+        int affichage = 0; //s'incrémente à chaque tour et permet d'afficher les pions bien placé lorsque l'on passe à la ligne suivante
+        //int k = 0;
 
         //(grilleJeu.etreGagnantPourJoueur() == false) ||
         while (grilleJeu.etreRemplie() == false) {
@@ -110,10 +111,10 @@ public class Partie {
             }
             remplissage++;
             affichage++;
-            System.out.println("Quelle couleur jouer parmis 'Rouge,Jaune,Vert,Bleu,Orange,Marron,Fushia,Noir' ? ");
+            System.out.println("Quelle couleur jouer parmis 'Rouge,Jaune,Vert,Bleu,Gris,Turquoise,Fushia,Noir' ? ");
             String couleur = sc.nextLine();
 
-            while (!("Rouge".equals(couleur) || "Jaune".equals(couleur) || "Vert".equals(couleur) || "Bleu".equals(couleur) || "Orange".equals(couleur) || "Marron".equals(couleur) || "Fushia".equals(couleur) || "Noir".equals(couleur))) {
+            while (!("Rouge".equals(couleur) || "Jaune".equals(couleur) || "Vert".equals(couleur) || "Bleu".equals(couleur) || "Gris".equals(couleur) || "Turquoise".equals(couleur) || "Fushia".equals(couleur) || "Noir".equals(couleur))) {
                 //System.out.println("Quelle couleur jouer parmis 'Rouge,Jaune,Vert,Bleu,Orange,Marron,Fushia,Noir' ? ");
                 couleur = sc.nextLine();
             }
@@ -122,7 +123,7 @@ public class Partie {
 
             if (pioche.reponse.get(colonne).lireCouleur() == a.get(0).lireCouleur()) {
                 compteur_bien_place++;
-                k++;
+                //k++;
             }
             for (int i = 0; i < 4; i++) {
                 if (pioche.reponse.get(i).lireCouleur() == a.get(0).lireCouleur()) {
@@ -130,7 +131,8 @@ public class Partie {
                     break;
                 }
             }
-
+            
+            System.out.println(grilleJeu.ligneRemplie());
             if (affichage > 4) {
                 System.out.println("TOUR PRÉCÉDENT");
                 System.out.println("Nombre de couleur bien choisie : " + temp2);
@@ -146,16 +148,18 @@ public class Partie {
 
             if (remplissage == 4) {
                 temp1 = compteur_bien_place;
-                temp2 = compteur_bonne_couleur - k;
+                temp2 = compteur_bonne_couleur - compteur_bien_place;
                 System.out.println("TOUR ACTUEL");
-                System.out.println("Nombre de couleur bien choisie : " + (compteur_bonne_couleur - k));
+                System.out.println("Nombre de couleur bien choisie : " + (compteur_bonne_couleur - compteur_bien_place));
                 System.out.println("Nombre de pion bien placé : " + compteur_bien_place + "\n");
                 remplissage = 0;
                 compteur_bien_place = 0;
                 compteur_bonne_couleur = 0;
-                k = 0;
-            }
+                //k = 0;
+            } 
         }
+        System.out.println("Vous avez perdu ! Tout les coups ont été utilisés");
+        
 
     }
 }

@@ -16,8 +16,8 @@ public class Pioche {
     ArrayList<Pion> couleurJaune = new ArrayList<>();
     ArrayList<Pion> couleurVert = new ArrayList<>();
     ArrayList<Pion> couleurBleu = new ArrayList<>();
-    ArrayList<Pion> couleurOrange = new ArrayList<>();
-    ArrayList<Pion> couleurMarron = new ArrayList<>();
+    ArrayList<Pion> couleurGris = new ArrayList<>();
+    ArrayList<Pion> couleurTurquoise = new ArrayList<>();
     ArrayList<Pion> couleurFushia = new ArrayList<>();
     ArrayList<Pion> couleurNoir = new ArrayList<>();
     ArrayList<Pion> reponse = new ArrayList<>();
@@ -32,10 +32,10 @@ public class Pioche {
             couleurVert.add(unPion);
         } else if ("Bleu".equals(unPion.lireCouleur())) {
             couleurBleu.add(unPion);
-        } else if ("Orange".equals(unPion.lireCouleur())) {
-            couleurOrange.add(unPion);
-        } else if ("Marron".equals(unPion.lireCouleur())) {
-            couleurMarron.add(unPion);
+        } else if ("Gris".equals(unPion.lireCouleur())) {
+            couleurGris.add(unPion);
+        } else if ("Turquoise".equals(unPion.lireCouleur())) {
+            couleurTurquoise.add(unPion);
         } else if ("Fushia".equals(unPion.lireCouleur())) {
             couleurFushia.add(unPion);
         } else if ("Noir".equals(unPion.lireCouleur())) {
@@ -53,9 +53,9 @@ public class Pioche {
             reponse.add(unPion);
         } else if ("Bleu".equals(unPion.lireCouleur())) {
             reponse.add(unPion);
-        } else if ("Orange".equals(unPion.lireCouleur())) {
+        } else if ("Gris".equals(unPion.lireCouleur())) {
             reponse.add(unPion);
-        } else if ("Marron".equals(unPion.lireCouleur())) {
+        } else if ("Turquoise".equals(unPion.lireCouleur())) {
             reponse.add(unPion);
         } else if ("Fushia".equals(unPion.lireCouleur())) {
             reponse.add(unPion);
@@ -77,10 +77,10 @@ public class Pioche {
                     couleurVert.remove(0);
                 case "Bleu" ->
                     couleurBleu.remove(0);
-                case "Orange" ->
-                    couleurOrange.remove(0);
-                case "Marron" ->
-                    couleurMarron.remove(0);
+                case "Gris" ->
+                    couleurGris.remove(0);
+                case "Turquoise" ->
+                    couleurTurquoise.remove(0);
                 case "Fushia" ->
                     couleurFushia.remove(0);
                 case "Noir" ->
