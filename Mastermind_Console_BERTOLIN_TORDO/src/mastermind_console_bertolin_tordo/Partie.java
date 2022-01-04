@@ -127,15 +127,162 @@ public class Partie {
             System.out.println(choix_joueur[1]);
             System.out.println(choix_joueur[2]);
             System.out.println(choix_joueur[3]);
+
             
-            
-            
-            System.out.println(grilleJeu.convertion(choix_joueur[0]));
-            
-            
-            
-            
-            
+            int s = 0;
+            for (int i = 3; i >= 0; i--) {
+
+                if (choix_joueur[i] == 1) {
+                    ArrayList<Pion> a = (ArrayList) sacDeTableaux.get("Rouge");
+                    grilleJeu.ajouterPionDansLigne(a.get(0), s);
+                    //grilleJeu.afficherGrilleSurConsole();
+                    
+                    if (pioche.reponse.get(s).lireCouleur() == a.get(0).lireCouleur()) {
+                        compteur_bien_place++;
+                        //k++;
+                    }
+                    //compare si la couleur du pion placé est présente dans la grille de réponse
+                    for (int h = 0; h < 4; h++) {
+                        if (pioche.reponse.get(h).lireCouleur() == a.get(0).lireCouleur()) {
+                            compteur_bonne_couleur++;
+                            break;
+                        }
+                    }
+                    s++;
+                } else if (choix_joueur[i] == 2) {
+                    ArrayList<Pion> a = (ArrayList) sacDeTableaux.get("Jaune");
+                    grilleJeu.ajouterPionDansLigne(a.get(0), s);
+                    //grilleJeu.afficherGrilleSurConsole();
+                    
+                    if (pioche.reponse.get(s).lireCouleur() == a.get(0).lireCouleur()) {
+                        compteur_bien_place++;
+                        //k++;
+                    }
+                    //compare si la couleur du pion placé est présente dans la grille de réponse
+                    for (int h = 0; h < 4; h++) {
+                        if (pioche.reponse.get(h).lireCouleur() == a.get(0).lireCouleur()) {
+                            compteur_bonne_couleur++;
+                            break;
+                        }
+                    }
+                    s++;
+                } else if (choix_joueur[i] == 3) {
+                    ArrayList<Pion> a = (ArrayList) sacDeTableaux.get("Vert");
+                    grilleJeu.ajouterPionDansLigne(a.get(0), s);
+                    //grilleJeu.afficherGrilleSurConsole();
+                    
+                    if (pioche.reponse.get(s).lireCouleur() == a.get(0).lireCouleur()) {
+                        compteur_bien_place++;
+                        //k++;
+                    }
+                    //compare si la couleur du pion placé est présente dans la grille de réponse
+                    for (int h = 0; h < 4; h++) {
+                        if (pioche.reponse.get(h).lireCouleur() == a.get(0).lireCouleur()) {
+                            compteur_bonne_couleur++;
+                            break;
+                        }
+                    }
+                    s++;
+                } else if (choix_joueur[i] == 4) {
+                    ArrayList<Pion> a = (ArrayList) sacDeTableaux.get("Bleu");
+                    grilleJeu.ajouterPionDansLigne(a.get(0), s);
+                    //grilleJeu.afficherGrilleSurConsole();
+                    
+                    if (pioche.reponse.get(s).lireCouleur() == a.get(0).lireCouleur()) {
+                        compteur_bien_place++;
+                        //k++;
+                    }
+                    //compare si la couleur du pion placé est présente dans la grille de réponse
+                    for (int h = 0; h < 4; h++) {
+                        if (pioche.reponse.get(h).lireCouleur() == a.get(0).lireCouleur()) {
+                            compteur_bonne_couleur++;
+                            break;
+                        }
+                    }
+                    s++;
+                } else if (choix_joueur[i] == 5) {
+                    ArrayList<Pion> a = (ArrayList) sacDeTableaux.get("Gris");
+                    grilleJeu.ajouterPionDansLigne(a.get(0), s);
+                    //grilleJeu.afficherGrilleSurConsole();
+                    
+                    if (pioche.reponse.get(s).lireCouleur() == a.get(0).lireCouleur()) {
+                        compteur_bien_place++;
+                        //k++;
+                    }
+                    //compare si la couleur du pion placé est présente dans la grille de réponse
+                    for (int h = 0; h < 4; h++) {
+                        if (pioche.reponse.get(h).lireCouleur() == a.get(0).lireCouleur()) {
+                            compteur_bonne_couleur++;
+                            break;
+                        }
+                    }
+                    s++;
+                } else if (choix_joueur[i] == 6) {
+                    ArrayList<Pion> a = (ArrayList) sacDeTableaux.get("Turquoise");
+                    grilleJeu.ajouterPionDansLigne(a.get(0), s);
+                    //grilleJeu.afficherGrilleSurConsole();
+                    
+                    if (pioche.reponse.get(s).lireCouleur() == a.get(0).lireCouleur()) {
+                        compteur_bien_place++;
+                        //k++;
+                    }
+                    //compare si la couleur du pion placé est présente dans la grille de réponse
+                    for (int h = 0; h < 4; h++) {
+                        if (pioche.reponse.get(h).lireCouleur() == a.get(0).lireCouleur()) {
+                            compteur_bonne_couleur++;
+                            break;
+                        }
+                    }
+                    s++;
+                } else if (choix_joueur[i] == 7) {
+                    ArrayList<Pion> a = (ArrayList) sacDeTableaux.get("Fushia");
+                    grilleJeu.ajouterPionDansLigne(a.get(0), s);
+                    //grilleJeu.afficherGrilleSurConsole();
+                    
+                    if (pioche.reponse.get(s).lireCouleur() == a.get(0).lireCouleur()) {
+                        compteur_bien_place++;
+                        //k++;
+                    }
+                    //compare si la couleur du pion placé est présente dans la grille de réponse
+                    for (int h = 0; h < 4; h++) {
+                        if (pioche.reponse.get(h).lireCouleur() == a.get(0).lireCouleur()) {
+                            compteur_bonne_couleur++;
+                            break;
+                        }
+                    }
+                    s++;
+                } else {
+                    ArrayList<Pion> a = (ArrayList) sacDeTableaux.get("Noir");
+                    grilleJeu.ajouterPionDansLigne(a.get(0), s);
+                    //grilleJeu.afficherGrilleSurConsole();
+                    
+                    if (pioche.reponse.get(s).lireCouleur() == a.get(0).lireCouleur()) {
+                        compteur_bien_place++;
+                        //k++;
+                    }
+                    //compare si la couleur du pion placé est présente dans la grille de réponse
+                    for (int h = 0; h < 4; h++) {
+                        if (pioche.reponse.get(h).lireCouleur() == a.get(0).lireCouleur()) {
+                            compteur_bonne_couleur++;
+                            break;
+                        }
+                    }
+                    s++;
+                }
+            }
+            s = 0;
+            //grilleJeu.afficherGrilleSurConsole();
+            /*if (pioche.reponse.get(colonne).lireCouleur() == a.get(0).lireCouleur()) {
+                compteur_bien_place++;
+                //k++;
+            }
+            //compare si la couleur du pion placé est présente dans la grille de réponse
+            for (int h = 0; h < 4; h++) {
+                if (pioche.reponse.get(h).lireCouleur() == a.get(0).lireCouleur()) {
+                    compteur_bonne_couleur++;
+                    break;
+                }
+            }
             
             System.out.println("Quelle couleur jouer parmis 'Rouge,Jaune,Vert,Bleu,Gris,Turquoise,Fushia,Noir' ? ");
             String couleur = sc.nextLine();
@@ -145,21 +292,9 @@ public class Partie {
             }
 
             ArrayList<Pion> a = (ArrayList) sacDeTableaux.get(couleur);
-            grilleJeu.ajouterPionDansLigne(a.get(0), colonne);
+            grilleJeu.ajouterPionDansLigne(a.get(0), colonne);*/
 
             //compare si la couleur du pion placé a l'endroit choisi est indentique à celui sur la grille de réponse
-            if (pioche.reponse.get(colonne).lireCouleur() == a.get(0).lireCouleur()) {
-                compteur_bien_place++;
-                //k++;
-            }
-            //compare si la couleur du pion placé est présente dans la grille de réponse
-            for (int i = 0; i < 4; i++) {
-                if (pioche.reponse.get(i).lireCouleur() == a.get(0).lireCouleur()) {
-                    compteur_bonne_couleur++;
-                    break;
-                }
-            }
-
             //System.out.println(grilleJeu.ligneRemplie());
             //Affiche les scores du tour précédent lorsque l'on passe à la ligne suivante, soit 4 coups après
             if (affichage > 4) {
@@ -168,7 +303,7 @@ public class Partie {
                 System.out.println("Nombre de pion bien placé : " + temp1 + "\n");
             }
 
-            a.remove(0);
+            //a.remove(0);
             if (compteur_bien_place == 4) {
                 grilleJeu.afficherGrilleSurConsole();
                 System.out.println("Vous avez gagné !");
@@ -187,7 +322,10 @@ public class Partie {
                 //k = 0;
             }
         }
-        System.out.println("Vous avez perdu ! Tout les coups ont été utilisés");
+        if(compteur_bien_place != 4){
+            System.out.println("Vous avez perdu ! Tout les coups ont été utilisés");
+        }
+        
 
     }
 }
