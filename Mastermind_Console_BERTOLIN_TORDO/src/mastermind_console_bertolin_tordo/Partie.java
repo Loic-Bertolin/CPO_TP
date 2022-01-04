@@ -6,7 +6,6 @@ package mastermind_console_bertolin_tordo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -58,7 +57,7 @@ public class Partie {
         sacDeTableaux.put("Turquoise", pioche.couleurTurquoise);
         sacDeTableaux.put("Fushia", pioche.couleurFushia);
         sacDeTableaux.put("Noir", pioche.couleurNoir);
-        
+
         // On génère les 4 pions aléatoirement que l'on va devoir deviner
         String random1 = grilleJeu.couleur_aleatoire();
         Pion pion1 = new Pion(random1);
@@ -92,6 +91,7 @@ public class Partie {
         int temp2 = 0; // compteur qui va stocker le nb de couleurs bien choisie du tour précédent pour le rappeler au joueur
         int affichage = 0; //s'incrémente à chaque tour et permet d'afficher les pions bien placé lorsque l'on passe à la ligne suivante
         //int k = 0;
+        int[] choix_joueur = new int[4];
 
         //(grilleJeu.etreGagnantPourJoueur() == false) ||
         while (grilleJeu.etreRemplie() == false) {
@@ -99,42 +99,68 @@ public class Partie {
             grilleJeu.afficherGrilleSurConsole();
 
             Scanner sc = new Scanner(System.in);
-            System.out.println(" Posez vos jetons");
-            System.out.println("1) Poser dans colonne 1");
-            System.out.println("2) Poser dans colonne 2");
+            System.out.println(" Entrez votre combinaison de 4 chiffres");
+            System.out.println("1 = Rouge, 2 = Jaune, 3 = Vert, 4 = Bleu, 5 = Gris, 6 = Turquoise, 7 = Rose, 8 = Noir ");
+            /*System.out.println("2) Poser dans colonne 2");
             System.out.println("3) Poser dans colonne 3");
-            System.out.println("4) Poser dans colonne 4");
-            int colonne = sc.nextInt() - 1;
-            while (colonne < 1 && colonne > 4) {
-                System.out.println("Erreur");
-                colonne = sc.nextInt() - 1;
+            System.out.println("4) Poser dans colonne 4");*/
+            int colonne = sc.nextInt();
+            while (colonne < 1000 || colonne > 9999 || grilleJeu.verifNb(colonne) == false) {
+                System.out.println("Erreur, entrez une combinaison de 4 chiffres");
+                colonne = sc.nextInt();
             }
             remplissage++; //incrémente le comtpeur à chaque fois que le joueur joue
             affichage++;
+
+            choix_joueur[0] = colonne % 10;
+            colonne = colonne / 10;
+            int b = colonne % 10;
+            choix_joueur[1] = b;
+            colonne = colonne / 10;
+            int c = colonne % 10;
+            choix_joueur[2] = c;
+            colonne = colonne / 10;
+            int d = colonne % 10;
+            choix_joueur[3] = d;
+
+            System.out.println(choix_joueur[0]);
+            System.out.println(choix_joueur[1]);
+            System.out.println(choix_joueur[2]);
+            System.out.println(choix_joueur[3]);
+            
+            
+            
+            System.out.println(grilleJeu.convertion(choix_joueur[0]));
+            
+            
+            
+            
+            
             
             System.out.println("Quelle couleur jouer parmis 'Rouge,Jaune,Vert,Bleu,Gris,Turquoise,Fushia,Noir' ? ");
             String couleur = sc.nextLine();
 
             while (!("Rouge".equals(couleur) || "Jaune".equals(couleur) || "Vert".equals(couleur) || "Bleu".equals(couleur) || "Gris".equals(couleur) || "Turquoise".equals(couleur) || "Fushia".equals(couleur) || "Noir".equals(couleur))) {
-                //System.out.println("Quelle couleur jouer parmis 'Rouge,Jaune,Vert,Bleu,Orange,Marron,Fushia,Noir' ? ");
                 couleur = sc.nextLine();
             }
+
             ArrayList<Pion> a = (ArrayList) sacDeTableaux.get(couleur);
             grilleJeu.ajouterPionDansLigne(a.get(0), colonne);
 
+            //compare si la couleur du pion placé a l'endroit choisi est indentique à celui sur la grille de réponse
             if (pioche.reponse.get(colonne).lireCouleur() == a.get(0).lireCouleur()) {
                 compteur_bien_place++;
                 //k++;
             }
+            //compare si la couleur du pion placé est présente dans la grille de réponse
             for (int i = 0; i < 4; i++) {
                 if (pioche.reponse.get(i).lireCouleur() == a.get(0).lireCouleur()) {
                     compteur_bonne_couleur++;
                     break;
                 }
             }
-            
+
             //System.out.println(grilleJeu.ligneRemplie());
-            
             //Affiche les scores du tour précédent lorsque l'on passe à la ligne suivante, soit 4 coups après
             if (affichage > 4) {
                 System.out.println("TOUR PRÉCÉDENT");
@@ -159,10 +185,9 @@ public class Partie {
                 compteur_bien_place = 0;
                 compteur_bonne_couleur = 0;
                 //k = 0;
-            } 
+            }
         }
         System.out.println("Vous avez perdu ! Tout les coups ont été utilisés");
-        
 
     }
 }
