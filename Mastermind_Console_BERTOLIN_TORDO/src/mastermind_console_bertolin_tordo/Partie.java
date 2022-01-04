@@ -48,7 +48,7 @@ public class Partie {
             pioche.ajouterPion(pion8);
 
         }
-
+        // Création d'un sac de tableau avec des mot clé faisant référence à l'ArrayList de pion correspondant
         sacDeTableaux = new HashMap();
         sacDeTableaux.put("Rouge", pioche.couleurRouge);
         sacDeTableaux.put("Jaune", pioche.couleurJaune);
@@ -109,8 +109,9 @@ public class Partie {
                 System.out.println("Erreur");
                 colonne = sc.nextInt() - 1;
             }
-            remplissage++;
+            remplissage++; //incrémente le comtpeur à chaque fois que le joueur joue
             affichage++;
+            
             System.out.println("Quelle couleur jouer parmis 'Rouge,Jaune,Vert,Bleu,Gris,Turquoise,Fushia,Noir' ? ");
             String couleur = sc.nextLine();
 
@@ -132,7 +133,9 @@ public class Partie {
                 }
             }
             
-            System.out.println(grilleJeu.ligneRemplie());
+            //System.out.println(grilleJeu.ligneRemplie());
+            
+            //Affiche les scores du tour précédent lorsque l'on passe à la ligne suivante, soit 4 coups après
             if (affichage > 4) {
                 System.out.println("TOUR PRÉCÉDENT");
                 System.out.println("Nombre de couleur bien choisie : " + temp2);
